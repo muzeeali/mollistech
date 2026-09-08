@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body { margin: 0; }
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  backdrop-filter: blur(10px);
+  background: rgba(255,0,0,0.5);
+}
+.header.active {
+  height: 100vh;
+}
+.container {
+  display: flex;
+  align-items: center;
+  height: 80px;
+}
+.navmenu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: blue;
+  z-index: 9998;
+}
+</style>
+</head>
+<body>
+  <div class="header active" id="header">
+    <div class="container">
+      <div>Logo</div>
+      <div class="navmenu">Menu Content</div>
+    </div>
+  </div>
+</body>
+</html>

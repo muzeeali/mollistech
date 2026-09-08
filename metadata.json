@@ -1,0 +1,6 @@
+{
+  "name": "Valo Clone",
+  "description": "A clone of thevalo.net using HTML, CSS, JS, and jQuery.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
