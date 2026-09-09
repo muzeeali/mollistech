@@ -27,6 +27,9 @@ export function initAnimations() {
         let index = 0;
         const buttons = $(entry.target).find('button.relative');
         if (buttons.length > 0) {
+          // Trigger first one immediately so it types out like a terminal
+          $(buttons[0]).trigger('mouseenter');
+          index++;
           const interval = setInterval(() => {
             if (index >= buttons.length) {
               clearInterval(interval);
@@ -79,7 +82,7 @@ export function initAnimations() {
     },
     'Cybersecurity': {
       filename: 'cybersecurity.config',
-      content: `{\n  "title": "Cybersecurity & Cloud Security",\n  "description": "Security is embedded into our architecture, development, and cloud operations to ensure resilient systems.",\n  "protocols": ["Zero-Trust", "OAuth 2.0", "AES-256"]\n}`
+      content: `{\n  "title": "Cybersecurity",\n  "description": "Security is embedded into our architecture, development, and cloud operations to ensure resilient systems.",\n  "protocols": ["Zero-Trust", "OAuth 2.0", "AES-256"]\n}`
     },
     'AI & Data': {
       filename: 'ai-data-solutions.py',
@@ -483,6 +486,68 @@ export function initAnimations() {
       terminalObserver.observe(this);
     });
   }
+
+
+
+  
+  
+  
+  // Capabilities scroll observer
+  const capabilityTexts = [
+    { title: "Custom Software Development", icon: "bi-code-slash", image: "https://www.thevalo.net/assets/img/services/custom-software-development.png" },
+    { title: "Cloud Engineering & DevOps", icon: "bi-cloud-arrow-up", image: "https://www.thevalo.net/assets/img/services/Cloud-Engineering-and-DevOps.png" },
+    { title: "AI & Data Solutions", icon: "bi-cpu", image: "https://www.thevalo.net/assets/img/services/ai-and-data-solutions.png" },
+    { title: "UI/UX Design", icon: "bi-palette" },
+    { title: "Cybersecurity", icon: "bi-shield-lock" },
+    { title: "Quality Assurance & Automation", icon: "bi-check2-all" },
+    { title: "Dedicated Engineering Teams", icon: "bi-people-fill" },
+    { title: "Mobile App Development", icon: "bi-phone" },
+    { title: "API Development & System Integration", icon: "bi-diagram-3" }
+  ];
+
+  let currentCapabilityIndex = -1;
+  const capabilityObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Reset all sections
+        $('.capability-text-container > div').removeClass('opacity-100 translate-x-0').addClass('opacity-20 -translate-x-8');
+        // Activate current
+        $(entry.target).removeClass('opacity-20 -translate-x-8').addClass('opacity-100 translate-x-0');
+        
+        const index = parseInt($(entry.target).attr('data-index'));
+        if (index !== currentCapabilityIndex && index >= 0 && index < capabilityTexts.length) {
+          currentCapabilityIndex = index;
+          
+          const iconEl = $('#capability-icon');
+          const imgEl = $('#capability-image');
+          const textEl = $('#capability-text');
+          const contentEl = $('#capability-visual-content');
+          
+          contentEl.css('opacity', '0');
+          
+          setTimeout(() => {
+            const data = capabilityTexts[index];
+            if (data.image) {
+              iconEl.addClass('hidden');
+              imgEl.attr('src', data.image).removeClass('hidden');
+            } else {
+              imgEl.addClass('hidden');
+              iconEl.attr('class', `${data.icon} text-8xl md:text-9xl text-[#1868DB] opacity-40 transition-all duration-500`).removeClass('hidden');
+            }
+            textEl.text(`${data.title} // ARCHITECTURE`);
+            contentEl.css('opacity', '1');
+          }, 300);
+        }
+      }
+    });
+  }, { threshold: 0.4 });
+
+  $('.capability-text-container > div').each(function() {
+    capabilityObserver.observe(this);
+  });
+
+
+
 
 
 // 13. Services & Capabilities Network Topology Animation
