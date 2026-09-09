@@ -269,89 +269,82 @@ export function initAnimations() {
   
   // 12. IDE Terminal Typing Animation
   const ideFiles = [
-    "custom-software.json",
-    "cloud-infrastructure.json",
-    "design-system.json",
-    "data-engineering.json",
-    "ai-models.json",
-    "ci-cd-pipeline.json"
-  ];
+  "paid-advertising.json",
+  "seo-strategy.json",
+  "social-media.json",
+  "software-development.json",
+  "ui-ux.json",
+  "system-integration.json"
+];
 
-  const ideContents = [
-`<span class="text-[#8b949e]">/**
- * Service Module: Custom Software Development
+  const ideContents = [`<span class="text-[#8b949e]">/**
+ * Service Module: Paid Advertising
  */</span>
-<span class="text-[#ff7b72]">export const</span> <span class="text-[#79c0ff]">serviceData</span> = {
-  <span class="text-[#a5d6ff]">"title"</span>: <span class="text-[#a5d6ff]">"Custom Software Development"</span>,
+<span class="text-[#ff7b72]">export const</span> <span class="text-[#79c0ff]">campaignData</span> = {
+  <span class="text-[#a5d6ff]">"title"</span>: <span class="text-[#a5d6ff]">"Data-Driven Campaigns"</span>,
+  <span class="text-[#a5d6ff]">"description"</span>: <span class="text-[#a5d6ff]">"Maximize your ROI with targeted ad placements, rigorous A/B testing, and data-backed performance marketing strategies."</span>,
+  <span class="text-[#a5d6ff]">"channels"</span>: [
+    <span class="text-[#a5d6ff]">"Google Ads"</span>,
+    <span class="text-[#a5d6ff]">"Meta Ads"</span>,
+    <span class="text-[#a5d6ff]">"LinkedIn Ads"</span>,
+    <span class="text-[#a5d6ff]">"Programmatic"</span>
+  ]
+};`,`<span class="text-[#8b949e]">/**
+ * Service Module: SEO
+ */</span>
+<span class="text-[#ff7b72]">export const</span> <span class="text-[#79c0ff]">seoData</span> = {
+  <span class="text-[#a5d6ff]">"title"</span>: <span class="text-[#a5d6ff]">"Search Engine Optimization"</span>,
+  <span class="text-[#a5d6ff]">"description"</span>: <span class="text-[#a5d6ff]">"Increase your visibility and drive high-quality organic traffic through technical SEO, optimized content, and authoritative link building."</span>,
+  <span class="text-[#a5d6ff]">"tactics"</span>: [
+    <span class="text-[#a5d6ff]">"Technical SEO"</span>,
+    <span class="text-[#a5d6ff]">"Content Strategy"</span>,
+    <span class="text-[#a5d6ff]">"Link Building"</span>
+  ]
+};`,`<span class="text-[#8b949e]">/**
+ * Service Module: Social Media
+ */</span>
+<span class="text-[#ff7b72]">export const</span> <span class="text-[#79c0ff]">socialData</span> = {
+  <span class="text-[#a5d6ff]">"title"</span>: <span class="text-[#a5d6ff]">"Social Media Marketing"</span>,
+  <span class="text-[#a5d6ff]">"description"</span>: <span class="text-[#a5d6ff]">"Build brand loyalty and community through strategic content, proactive engagement, and targeted social campaigns."</span>,
+  <span class="text-[#a5d6ff]">"platforms"</span>: [
+    <span class="text-[#a5d6ff]">"Instagram"</span>,
+    <span class="text-[#a5d6ff]">"TikTok"</span>,
+    <span class="text-[#a5d6ff]">"LinkedIn"</span>
+  ]
+};`,`<span class="text-[#8b949e]">/**
+ * Service Module: Software Development
+ */</span>
+<span class="text-[#ff7b72]">export const</span> <span class="text-[#79c0ff]">softwareData</span> = {
+  <span class="text-[#a5d6ff]">"title"</span>: <span class="text-[#a5d6ff]">"Custom Software Engineering"</span>,
   <span class="text-[#a5d6ff]">"description"</span>: <span class="text-[#a5d6ff]">"We design and develop secure, maintainable, and high-performance software for web, mobile, and enterprise environments."</span>,
   <span class="text-[#a5d6ff]">"stack"</span>: [
     <span class="text-[#a5d6ff]">"React"</span>,
     <span class="text-[#a5d6ff]">"Node.js"</span>,
-    <span class="text-[#a5d6ff]">"Python"</span>,
-    <span class="text-[#a5d6ff]">"Go"</span>
+    <span class="text-[#a5d6ff]">"Python"</span>
   ]
-};`,
-`<span class="text-[#8b949e]">/**
- * Service Module: Cloud
- */</span>
-<span class="text-[#ff7b72]">export const</span> <span class="text-[#79c0ff]">cloudData</span> = {
-  <span class="text-[#a5d6ff]">"title"</span>: <span class="text-[#a5d6ff]">"Cloud Architecture & Migration"</span>,
-  <span class="text-[#a5d6ff]">"description"</span>: <span class="text-[#a5d6ff]">"Scalable cloud infrastructure designed for maximum reliability and performance."</span>,
-  <span class="text-[#a5d6ff]">"providers"</span>: [
-    <span class="text-[#a5d6ff]">"AWS"</span>,
-    <span class="text-[#a5d6ff]">"Google Cloud"</span>,
-    <span class="text-[#a5d6ff]">"Azure"</span>
-  ]
-};`,
-`<span class="text-[#8b949e]">/**
+};`,`<span class="text-[#8b949e]">/**
  * Service Module: UI/UX
  */</span>
 <span class="text-[#ff7b72]">export const</span> <span class="text-[#79c0ff]">designData</span> = {
   <span class="text-[#a5d6ff]">"title"</span>: <span class="text-[#a5d6ff]">"User Interface & Experience"</span>,
-  <span class="text-[#a5d6ff]">"description"</span>: <span class="text-[#a5d6ff]">"Human-centered design creating intuitive, engaging, and beautiful product experiences."</span>,
+  <span class="text-[#a5d6ff]">"description"</span>: <span class="text-[#a5d6ff]">"Simplify complex workflows with pixel-perfect, user-centric interfaces designed for modern users."</span>,
   <span class="text-[#a5d6ff]">"tools"</span>: [
     <span class="text-[#a5d6ff]">"Figma"</span>,
     <span class="text-[#a5d6ff]">"Framer"</span>,
     <span class="text-[#a5d6ff]">"Webflow"</span>
   ]
-};`,
-`<span class="text-[#8b949e]">/**
- * Service Module: Data
+};`,`<span class="text-[#8b949e]">/**
+ * Service Module: System Integration
  */</span>
-<span class="text-[#ff7b72]">export const</span> <span class="text-[#79c0ff]">dataData</span> = {
-  <span class="text-[#a5d6ff]">"title"</span>: <span class="text-[#a5d6ff]">"Data Engineering & Analytics"</span>,
-  <span class="text-[#a5d6ff]">"description"</span>: <span class="text-[#a5d6ff]">"High-speed pipelines and secure warehousing to transform raw data into actionable insights."</span>,
-  <span class="text-[#a5d6ff]">"stack"</span>: [
-    <span class="text-[#a5d6ff]">"Snowflake"</span>,
-    <span class="text-[#a5d6ff]">"dbt"</span>,
-    <span class="text-[#a5d6ff]">"Airflow"</span>
+<span class="text-[#ff7b72]">export const</span> <span class="text-[#79c0ff]">integrationData</span> = {
+  <span class="text-[#a5d6ff]">"title"</span>: <span class="text-[#a5d6ff]">"Connecting Digital Ecosystems"</span>,
+  <span class="text-[#a5d6ff]">"description"</span>: <span class="text-[#a5d6ff]">"We build robust, secure APIs and seamlessly integrate third-party platforms to automate data flow across your organization."</span>,
+  <span class="text-[#a5d6ff]">"protocols"</span>: [
+    <span class="text-[#a5d6ff]">"REST"</span>,
+    <span class="text-[#a5d6ff]">"GraphQL"</span>,
+    <span class="text-[#a5d6ff]">"WebSockets"</span>
   ]
-};`,
-`<span class="text-[#8b949e]">/**
- * Service Module: AI Enhancement
- */</span>
-<span class="text-[#ff7b72]">export const</span> <span class="text-[#79c0ff]">aiData</span> = {
-  <span class="text-[#a5d6ff]">"title"</span>: <span class="text-[#a5d6ff]">"Generative AI Embedded"</span>,
-  <span class="text-[#a5d6ff]">"description"</span>: <span class="text-[#a5d6ff]">"Deploy proprietary machine learning models directly into your applications for intelligent automation."</span>,
-  <span class="text-[#a5d6ff]">"capabilities"</span>: [
-    <span class="text-[#a5d6ff]">"LLMs"</span>,
-    <span class="text-[#a5d6ff]">"Computer Vision"</span>,
-    <span class="text-[#a5d6ff]">"Predictive Analytics"</span>
-  ]
-};`,
-`<span class="text-[#8b949e]">/**
- * Service Module: DevOps
- */</span>
-<span class="text-[#ff7b72]">export const</span> <span class="text-[#79c0ff]">devopsData</span> = {
-  <span class="text-[#a5d6ff]">"title"</span>: <span class="text-[#a5d6ff]">"Automated DevOps Pipelines"</span>,
-  <span class="text-[#a5d6ff]">"description"</span>: <span class="text-[#a5d6ff]">"Accelerate delivery with continuous integration, automated testing, and secure release orchestration."</span>,
-  <span class="text-[#a5d6ff]">"tools"</span>: [
-    <span class="text-[#a5d6ff]">"Kubernetes"</span>,
-    <span class="text-[#a5d6ff]">"Terraform"</span>,
-    <span class="text-[#a5d6ff]">"GitHub Actions"</span>
-  ]
-};`
-  ];
+};`];
 
   let currentIdeIndex = -1;
   const ideFilenameEl = $('#ide-filename');
