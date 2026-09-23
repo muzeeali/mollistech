@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import parse from 'html-react-parser';
 import { page_home, page_about, page_services, page_staff_augmentation, page_security, page_case_studies, page_contact, page_faqs, page_privacy, page_terms } from './pages';
-import { layout_header, layout_footer } from './layout';
+import { getLayoutHeader, layout_footer } from './layout';
 import { initAnimations } from './animations';
 
 function Page({ htmlContent }: { htmlContent: string }) {
@@ -44,9 +44,25 @@ export default function App() {
     return () => document.removeEventListener('click', handleLinkClick);
   }, [navigate]);
 
+  useEffect(() => {
+    const path = location.pathname.length > 1 && location.pathname.endsWith('/') 
+      ? location.pathname.slice(0, -1) 
+      : location.pathname;
+
+    const navLinks = document.querySelectorAll('#navmenu a');
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href === path || (href && href !== '/' && path.startsWith(href))) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+  }, [location.pathname]);
+
   return (
     <div className="app-container index-page bg-white">
-      {layout_header && parse(layout_header)}
+      {parse(getLayoutHeader(location.pathname))}
       
       <Routes>
         <Route path="/" element={<Page htmlContent={page_home} />} />
