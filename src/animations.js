@@ -1,6 +1,54 @@
 export function initAnimations() {
   const $ = window.$;
   if (!$) return;
+
+  function typeHTML(htmlStr, element) {
+    if (!element || !element.length) return;
+    clearInterval(element.data('typeInterval'));
+    element.html('');
+    
+    const tokens = [];
+    let i = 0;
+    while(i < htmlStr.length) {
+      if (htmlStr[i] === '<') {
+        let closingIdx = htmlStr.indexOf('>', i);
+        if (closingIdx !== -1) {
+          tokens.push(htmlStr.substring(i, closingIdx + 1));
+          i = closingIdx + 1;
+          continue;
+        }
+      }
+      if (htmlStr[i] === '&') {
+        let semiIdx = htmlStr.indexOf(';', i);
+        if (semiIdx !== -1 && semiIdx - i < 10) {
+          tokens.push(htmlStr.substring(i, semiIdx + 1));
+          i = semiIdx + 1;
+          continue;
+        }
+      }
+      tokens.push(htmlStr[i]);
+      i++;
+    }
+    
+    let tokenIndex = 0;
+    let currentHtml = '';
+    const interval = setInterval(() => {
+      while (tokenIndex < tokens.length && tokens[tokenIndex].startsWith('<')) {
+        currentHtml += tokens[tokenIndex];
+        tokenIndex++;
+      }
+      if (tokenIndex < tokens.length) {
+        currentHtml += tokens[tokenIndex];
+        tokenIndex++;
+        element.html(currentHtml);
+      } else {
+        element.html(currentHtml);
+        clearInterval(interval);
+      }
+    }, 8);
+    element.data('typeInterval', interval);
+  }
+
   
   // 1. Intersection Observer for Scroll Animations
   const observer = new IntersectionObserver((entries) => {
@@ -72,41 +120,53 @@ export function initAnimations() {
   });
 
   const servicesData = {
-    'Custom Software Development': {
-      filename: 'custom-software.json',
-      content: `{\n  "title": "Custom Software Development",\n  "description": "We design and develop secure, maintainable, and high-performance software for web, mobile, and enterprise environments.",\n  "stack": ["React", "Node.js", "Python", "Go"]\n}`
+    'Paid Advertising': {
+      filename: 'paid-advertising.json',
+      content: "{\n  \"title\": \"Paid Advertising\",\n  \"tagline\": \"Media Buying Managed Against Contribution Margin\",\n  \"channels\": [\"Meta\", \"Google\", \"TikTok\", \"Programmatic\"],\n  \"optimization\": \"Net Contribution Margin\"\n}"
     },
-    'Cloud Engineering': {
-      filename: 'cloud-devops.yaml',
-      content: `title: Cloud Engineering & DevOps\ndescription: We design, automate, and operate production-grade cloud environments focused on scalability and reliability.\nstack:\n  - AWS\n  - Docker\n  - Kubernetes\n  - Terraform`
+    'SEO': {
+      filename: 'seo-strategy.ts',
+      content: "{\n  \"title\": \"SEO\",\n  \"tagline\": \"Technical Audits & Topical Authority Mapping\",\n  \"technical\": [\"Core Web Vitals\", \"Architecture Overhauls\"],\n  \"growth\": [\"Topical Mapping\", \"Digital PR\"]\n}"
     },
-    'Cybersecurity': {
-      filename: 'cybersecurity.config',
-      content: `{\n  "title": "Cybersecurity",\n  "description": "Security is embedded into our architecture, development, and cloud operations to ensure resilient systems.",\n  "protocols": ["Zero-Trust", "OAuth 2.0", "AES-256"]\n}`
+    'Social Media': {
+      filename: 'social-media.yml',
+      content: "title: Social Media\ntagline: Always-On Channel Strategy & Community Engines\nplatforms: [\"LinkedIn\", \"Instagram\", \"TikTok\", \"X\"]\nfocus: Community Engines & Recurring Revenue"
     },
-    'AI & Data': {
-      filename: 'ai-data-solutions.py',
-      content: `def ai_data_solutions():\n    return {\n        "title": "AI & Data Solutions",\n        "description": "We build scalable data-driven platforms that enable automation, analytics, and advanced product capabilities.",\n        "frameworks": ["PyTorch", "TensorFlow", "Snowflake"]\n    }`
+    'Content Production': {
+      filename: 'content-production.config',
+      content: "{\n  \"title\": \"Content Production\",\n  \"tagline\": \"High-Impact Video, Motion & Copy Assets\",\n  \"disciplines\": [\"Commercial Video\", \"Motion Graphics\", \"Photography\", \"Copywriting\"]\n}"
     },
-    'UI/UX': {
+    'App Marketing': {
+      filename: 'app-marketing.json',
+      content: "{\n  \"title\": \"App Marketing\",\n  \"tagline\": \"Scalable User Acquisition Funnels & LiveOps Campaigns\",\n  \"modules\": [\"ASO\", \"Paid UA\", \"Creative Testing\", \"LiveOps Frameworks\"]\n}"
+    },
+    'Brand Identity': {
+      filename: 'brand-identity.ts',
+      content: "{\n  \"title\": \"Brand Identity\",\n  \"tagline\": \"Market-Tested Positioning & Distinctive Brand Voice\",\n  \"deliverables\": [\"Brand Narrative\", \"Naming Architecture\", \"Visual Guidelines\", \"Collateral\"]\n}"
+    },
+    'System Integration': {
+      filename: 'system-integration.graphql',
+      content: "type SystemIntegration {\n  title: \"System Integration\"\n  tagline: \"CRM Plumbing, Data Pipelines & Attribution Models\"\n  crm: [\"Salesforce\", \"HubSpot\", \"Custom ERP\"]\n  pipelines: [\"Real-Time Sync\", \"Attribution\"]\n}"
+    },
+    'UI/UX Design': {
       filename: 'ui-ux-design.tsx',
-      content: `export const UIUX = {\n  title: "UI/UX Design",\n  description: "We design intuitive and accessible interfaces that simplify complex systems and improve product adoption.",\n  tools: ["Figma", "Tailwind CSS", "Framer"]\n};`
+      content: "export const UIUX = {\n  title: \"UI/UX Design\",\n  tagline: \"Intuitive Interfaces That Drive User Adoption\",\n  deliverables: [\"Design Systems\", \"Prototypes\", \"Wireframes\"]\n};"
     },
-    'Quality Assurance': {
-      filename: 'qa-automation.test.js',
-      content: `describe("Quality Assurance & Automation", () => {\n  it("ensures reliability", () => {\n    expect(testing).toContain(["Cypress", "Jest", "Selenium"]);\n  });\n});`
+    'Custom Software': {
+      filename: 'custom-software.json',
+      content: "{\n  \"title\": \"Custom Software\",\n  \"tagline\": \"End-to-End Enterprise Systems, Intelligent Automation & Cloud\",\n  \"stack\": [\"React\", \"Node.js\", \"Python\", \"Go\", \"Kubernetes\"]\n}"
     },
-    'Dedicated Engineering': {
-      filename: 'dedicated-teams.md',
-      content: `# Dedicated Engineering Teams\nWe provide experienced engineers who integrate directly into your team and workflows.\n\n**Methodology:** Agile, Scrum, Jira`
-    },
-    'Mobile App': {
+    'Mobile Development': {
       filename: 'mobile-development.swift',
-      content: `struct MobileApp {\n    let title = "Mobile App Development"\n    let technologies = ["React Native", "Swift", "Kotlin", "Flutter"]\n}`
+      content: "struct MobileApp {\n  let title = \"Mobile Development\"\n  let tagline = \"High-Performance Native & Cross-Platform\"\n  let stack = [\"SwiftUI\", \"Kotlin\", \"React Native\", \"Flutter\"]\n}"
     },
-    'API Development': {
-      filename: 'api-integration.graphql',
-      content: `type API {\n  title: String!\n  integrations: [String!]!\n}\n# REST, GraphQL, Webhooks, ERP/CRM`
+    'QA & Testing': {
+      filename: 'qa-testing.spec.ts',
+      content: "describe(\"QA & Testing\", () => {\n  it(\"ensures end-to-end reliability\", () => {\n    expect(defectPrevention).toBe(true);\n  });\n});"
+    },
+    'Staff Augmentation': {
+      filename: 'staff-augmentation.json',
+      content: "{\n  \"title\": \"Staff Augmentation\",\n  \"tagline\": \"Flexible Technical Capacity & Embedded Pods\",\n  \"talent\": \"Top 1% Senior Engineers\"\n}"
     }
   };
 
@@ -144,23 +204,7 @@ export function initAnimations() {
     updateTerminal(title, contextEl);
   });
   
-  $(document).off('mouseenter', 'button.relative.z-10.w-14');
-  $(document).on('mouseenter', 'button.relative.z-10.w-14', function() {
-    const tooltipText = $(this).next('div').text().trim();
-    if(tooltipText) {
-      const contextEl = $(this).closest('section');
-      updateTerminal(tooltipText, contextEl);
-      
-      $(this).closest('section').find('button.relative').removeClass('border-gray-500 text-[#c9d1d9]').addClass('border-[#30363d] text-[#8b949e]');
-      $(this).removeClass('border-[#30363d] text-[#8b949e]').addClass('border-gray-500 text-[#c9d1d9]');
-      $(this).next('div').removeClass('opacity-0').addClass('opacity-100');
-    }
-  });
-
-  $(document).off('mouseleave', 'button.relative.z-10.w-14');
-  $(document).on('mouseleave', 'button.relative.z-10.w-14', function() {
-    $(this).next('div').removeClass('opacity-100').addClass('opacity-0');
-  });
+  // Replaced by scoped network topology handlers
 
   
   $(document).off('click', '#hero-slider .bottom-12 button');
@@ -350,52 +394,7 @@ export function initAnimations() {
   const ideFilenameEl = $('#ide-filename');
   const ideContentEl = $('#ide-content');
 
-  const typeHTML = (htmlStr, element) => {
-    clearInterval(element.data('typeInterval'));
-    element.html('');
-    
-    const tokens = [];
-    let i = 0;
-    while(i < htmlStr.length) {
-        if (htmlStr[i] === '<') {
-            let closingIdx = htmlStr.indexOf('>', i);
-            if (closingIdx !== -1) {
-                tokens.push(htmlStr.substring(i, closingIdx + 1));
-                i = closingIdx + 1;
-                continue;
-            }
-        }
-        if (htmlStr[i] === '&') {
-            let semiIdx = htmlStr.indexOf(';', i);
-            if (semiIdx !== -1 && semiIdx - i < 10) {
-                tokens.push(htmlStr.substring(i, semiIdx + 1));
-                i = semiIdx + 1;
-                continue;
-            }
-        }
-        tokens.push(htmlStr[i]);
-        i++;
-    }
-    
-    let tokenIndex = 0;
-    let currentHtml = '';
-    const interval = setInterval(() => {
-        while (tokenIndex < tokens.length && tokens[tokenIndex].startsWith('<')) {
-            currentHtml += tokens[tokenIndex];
-            tokenIndex++;
-        }
-        
-        if (tokenIndex < tokens.length) {
-            currentHtml += tokens[tokenIndex];
-            tokenIndex++;
-            element.html(currentHtml);
-        } else {
-            element.html(currentHtml);
-            clearInterval(interval);
-        }
-    }, 10);
-    element.data('typeInterval', interval);
-  };
+  // typeHTML moved to top
 
 
   // 10. Text coloring animation based on scroll progress
@@ -487,15 +486,18 @@ export function initAnimations() {
   
   // Capabilities scroll observer
   const capabilityTexts = [
-    { title: "Custom Software Development", icon: "bi-code-slash", image: "https://www.thevalo.net/assets/img/services/custom-software-development.png" },
-    { title: "Cloud Engineering & DevOps", icon: "bi-cloud-arrow-up", image: "https://www.thevalo.net/assets/img/services/Cloud-Engineering-and-DevOps.png" },
-    { title: "AI & Data Solutions", icon: "bi-cpu", image: "https://www.thevalo.net/assets/img/services/ai-and-data-solutions.png" },
+    { title: "Paid Advertising", icon: "bi-bullseye" },
+    { title: "SEO", icon: "bi-search" },
+    { title: "Social Media", icon: "bi-share" },
+    { title: "Content Production", icon: "bi-camera-reels" },
+    { title: "App Marketing", icon: "bi-app-indicator" },
+    { title: "Brand Identity", icon: "bi-fingerprint" },
+    { title: "System Integration", icon: "bi-diagram-3" },
     { title: "UI/UX Design", icon: "bi-palette" },
-    { title: "Cybersecurity", icon: "bi-shield-lock" },
-    { title: "Quality Assurance & Automation", icon: "bi-check2-all" },
-    { title: "Dedicated Engineering Teams", icon: "bi-people-fill" },
-    { title: "Mobile App Development", icon: "bi-phone" },
-    { title: "API Development & System Integration", icon: "bi-diagram-3" }
+    { title: "Custom Software", icon: "bi-code-slash" },
+    { title: "Mobile Development", icon: "bi-phone" },
+    { title: "QA & Testing", icon: "bi-check2-all" },
+    { title: "Staff Augmentation", icon: "bi-people-fill" }
   ];
 
   let currentCapabilityIndex = -1;
@@ -546,113 +548,171 @@ export function initAnimations() {
 // 13. Services & Capabilities Network Topology Animation
   
     const serviceFiles = [
-      "custom-software.json",
-      "cloud-engineering.yml",
-      "cybersecurity.json",
-      "ai-data.py",
+      "paid-advertising.json",
+      "seo-strategy.ts",
+      "social-media.yml",
+      "content-production.config",
+      "app-marketing.json",
+      "brand-identity.ts",
+      "system-integration.graphql",
       "ui-ux-design.tsx",
-      "qa-automation.spec.ts",
-      "dedicated-teams.json",
-      "mobile-app.swift",
-      "api-integration.graphql"
+      "custom-software.json",
+      "mobile-development.swift",
+      "qa-testing.spec.ts",
+      "staff-augmentation.json"
     ];
 
     const serviceContents = [
 `<span class="text-[#8b949e]">/**
+ * Service: Paid Advertising
+ */</span>
+<span class="text-[#ff7b72]">export const</span> <span class="text-[#79c0ff]">adStrategy</span> = {
+  <span class="text-[#a5d6ff]">"service"</span>: <span class="text-[#a5d6ff]">"Paid Advertising"</span>,
+  <span class="text-[#a5d6ff]">"tagline"</span>: <span class="text-[#a5d6ff]">"Media Buying Managed Against Contribution Margin"</span>,
+  <span class="text-[#a5d6ff]">"networks"</span>: [
+    <span class="text-[#a5d6ff]">"Meta"</span>,
+    <span class="text-[#a5d6ff]">"Google"</span>,
+    <span class="text-[#a5d6ff]">"TikTok"</span>,
+    <span class="text-[#a5d6ff]">"Programmatic"</span>
+  ],
+  <span class="text-[#a5d6ff]">"optimization"</span>: <span class="text-[#a5d6ff]">"Net Contribution Margins & Blended Returns"</span>
+};`,
+`<span class="text-[#8b949e]">/**
+ * Service: SEO & Search Dominance
+ */</span>
+<span class="text-[#ff7b72]">export const</span> <span class="text-[#79c0ff]">seoEngine</span> = {
+  <span class="text-[#a5d6ff]">"service"</span>: <span class="text-[#a5d6ff]">"SEO"</span>,
+  <span class="text-[#a5d6ff]">"tagline"</span>: <span class="text-[#a5d6ff]">"Technical Audits & Topical Authority Mapping"</span>,
+  <span class="text-[#a5d6ff]">"audits"</span>: [<span class="text-[#a5d6ff]">"Core Web Vitals"</span>, <span class="text-[#a5d6ff]">"Crawl Architecture"</span>, <span class="text-[#a5d6ff]">"Schema"</span>],
+  <span class="text-[#a5d6ff]">"strategy"</span>: [<span class="text-[#a5d6ff]">"Topical Authority Mapping"</span>, <span class="text-[#a5d6ff]">"Digital PR Outreach"</span>],
+  <span class="text-[#a5d6ff]">"outcome"</span>: <span class="text-[#a5d6ff]">"Compounding Organic Pipeline Growth"</span>
+};`,
+`<span class="text-[#8b949e]"># Service: Social Media Channel Strategy</span>
+<span class="text-[#ff7b72]">channel_orchestration</span>:
+  - <span class="text-[#a5d6ff]">LinkedIn</span>
+  - <span class="text-[#a5d6ff]">Instagram</span>
+  - <span class="text-[#a5d6ff]">TikTok</span>
+  - <span class="text-[#a5d6ff]">X</span>
+
+<span class="text-[#79c0ff]">community_engines</span>:
+  <span class="text-[#a5d6ff]">cadence</span>: <span class="text-[#a5d6ff]">"High-Velocity Short-Form Pipelines"</span>
+  <span class="text-[#a5d6ff]">objective</span>: <span class="text-[#a5d6ff]">"Followers to Brand Advocates"</span>
+  <span class="text-[#a5d6ff]">result</span>: <span class="text-[#a5d6ff]">"Compounding Recurring Revenue"</span>`,
+`<span class="text-[#8b949e]">/**
+ * Service: Content Production
+ */</span>
+<span class="text-[#ff7b72]">export const</span> <span class="text-[#79c0ff]">creativeStudio</span> = {
+  <span class="text-[#a5d6ff]">"service"</span>: <span class="text-[#a5d6ff]">"Content Production"</span>,
+  <span class="text-[#a5d6ff]">"tagline"</span>: <span class="text-[#a5d6ff]">"High-Impact Video, Motion & Copy Assets"</span>,
+  <span class="text-[#a5d6ff]">"disciplines"</span>: [
+    <span class="text-[#a5d6ff]">"Commercial Video Production"</span>,
+    <span class="text-[#a5d6ff]">"2D/3D Motion Graphics"</span>,
+    <span class="text-[#a5d6ff]">"Product & Studio Photography"</span>,
+    <span class="text-[#a5d6ff]">"Direct-Response Copywriting"</span>
+  ],
+  <span class="text-[#a5d6ff]">"focus"</span>: <span class="text-[#a5d6ff]">"Maximum Audience Retention"</span>
+};`,
+`<span class="text-[#8b949e]">/**
+ * Service: App Marketing
+ */</span>
+<span class="text-[#ff7b72]">export const</span> <span class="text-[#79c0ff]">appMarketingStack</span> = {
+  <span class="text-[#a5d6ff]">"service"</span>: <span class="text-[#a5d6ff]">"App Marketing"</span>,
+  <span class="text-[#a5d6ff]">"tagline"</span>: <span class="text-[#a5d6ff]">"Scalable User Acquisition Funnels & LiveOps"</span>,
+  <span class="text-[#a5d6ff]">"aso"</span>: [<span class="text-[#a5d6ff]">"Keyword Indexing"</span>, <span class="text-[#a5d6ff]">"Custom Product Pages"</span>, <span class="text-[#a5d6ff]">"A/B Icon/Video Tests"</span>],
+  <span class="text-[#a5d6ff]">"user_acquisition"</span>: [<span class="text-[#a5d6ff]">"Apple Search Ads"</span>, <span class="text-[#a5d6ff]">"Google UAC"</span>, <span class="text-[#a5d6ff]">"Meta & TikTok UA"</span>],
+  <span class="text-[#a5d6ff]">"liveops"</span>: [<span class="text-[#a5d6ff]">"In-App Events"</span>, <span class="text-[#a5d6ff]">"Push Notifications"</span>, <span class="text-[#a5d6ff]">"Retention Frameworks"</span>]
+};`,
+`<span class="text-[#8b949e]">/**
+ * Service: Brand Identity
+ */</span>
+<span class="text-[#ff7b72]">export const</span> <span class="text-[#79c0ff]">brandArchitecture</span> = {
+  <span class="text-[#a5d6ff]">"service"</span>: <span class="text-[#a5d6ff]">"Brand Identity"</span>,
+  <span class="text-[#a5d6ff]">"tagline"</span>: <span class="text-[#a5d6ff]">"Market-Tested Positioning & Distinctive Brand Voice"</span>,
+  <span class="text-[#a5d6ff]">"elements"</span>: [
+    <span class="text-[#a5d6ff]">"Strategic Brand Narrative"</span>,
+    <span class="text-[#a5d6ff]">"Naming Architecture"</span>,
+    <span class="text-[#a5d6ff]">"Visual Identity Guidelines"</span>,
+    <span class="text-[#a5d6ff]">"Design Collateral Systems"</span>
+  ],
+  <span class="text-[#a5d6ff]">"market_impact"</span>: <span class="text-[#a5d6ff]">"High-Value Differentiation in Crowded Spaces"</span>
+};`,
+`<span class="text-[#8b949e]"># Service: System Integration & CRM Plumbing</span>
+<span class="text-[#ff7b72]">type</span> <span class="text-[#79c0ff]">SystemIntegration</span> {
+  <span class="text-[#a5d6ff]">service</span>: <span class="text-[#a5d6ff]">"System Integration"</span>
+  <span class="text-[#a5d6ff]">tagline</span>: <span class="text-[#a5d6ff]">"CRM Plumbing, Data Pipelines & Attribution Models"</span>
+  <span class="text-[#a5d6ff]">crm_integrations</span>: [<span class="text-[#a5d6ff]">"Salesforce"</span>, <span class="text-[#a5d6ff]">"HubSpot"</span>, <span class="text-[#a5d6ff]">"Custom Backend"</span>]
+  <span class="text-[#a5d6ff]">data_pipelines</span>: [<span class="text-[#a5d6ff]">"Real-Time Kafka"</span>, <span class="text-[#a5d6ff]">"Airflow Orchestration"</span>]
+  <span class="text-[#a5d6ff]">attribution</span>: <span class="text-[#a5d6ff]">"Multi-Touch Attribution Tracking"</span>
+  <span class="text-[#a5d6ff]">reliability</span>: <span class="text-[#a5d6ff]">"Zero Revenue & Data Leakage"</span>
+}`,
+`<span class="text-[#8b949e]">/**
+ * Service: UI/UX Design System
+ */</span>
+<span class="text-[#ff7b72]">export const</span> <span class="text-[#79c0ff]">DesignSystem</span> = {
+  <span class="text-[#a5d6ff]">"service"</span>: <span class="text-[#a5d6ff]">"UI/UX Design"</span>,
+  <span class="text-[#a5d6ff]">"tagline"</span>: <span class="text-[#a5d6ff]">"Intuitive Interfaces That Drive User Adoption"</span>,
+  <span class="text-[#a5d6ff]">"artifacts"</span>: [
+    <span class="text-[#a5d6ff]">"Frictionless Wireframes"</span>,
+    <span class="text-[#a5d6ff]">"Interactive Prototypes"</span>,
+    <span class="text-[#a5d6ff]">"Multi-Theme Token Systems"</span>
+  ],
+  <span class="text-[#a5d6ff]">"outcomes"</span>: <span class="text-[#a5d6ff]">"Increased Product Adoption & Long-Term Retention"</span>
+};`,
+`<span class="text-[#8b949e]">/**
  * Service: Custom Software Development
  */</span>
-<span class="text-[#ff7b72]">export const</span> <span class="text-[#79c0ff]">softwareData</span> = {
-  <span class="text-[#a5d6ff]">"title"</span>: <span class="text-[#a5d6ff]">"Custom Software Development"</span>,
-  <span class="text-[#a5d6ff]">"description"</span>: <span class="text-[#a5d6ff]">"Scalable, secure, and high-performance solutions."</span>,
-  <span class="text-[#a5d6ff]">"stack"</span>: [<span class="text-[#a5d6ff]">"React"</span>, <span class="text-[#a5d6ff]">"Node.js"</span>, <span class="text-[#a5d6ff]">"Python"</span>, <span class="text-[#a5d6ff]">"Go"</span>]
+<span class="text-[#ff7b72]">export const</span> <span class="text-[#79c0ff]">customSoftware</span> = {
+  <span class="text-[#a5d6ff]">"service"</span>: <span class="text-[#a5d6ff]">"Custom Software"</span>,
+  <span class="text-[#a5d6ff]">"tagline"</span>: <span class="text-[#a5d6ff]">"End-to-End Enterprise Systems & Cloud Foundations"</span>,
+  <span class="text-[#a5d6ff]">"architecture"</span>: [<span class="text-[#a5d6ff]">"Microservices"</span>, <span class="text-[#a5d6ff]">"Multi-Region Cloud"</span>, <span class="text-[#a5d6ff]">"Zero-Trust"</span>],
+  <span class="text-[#a5d6ff]">"stack"</span>: [<span class="text-[#a5d6ff]">"React"</span>, <span class="text-[#a5d6ff]">"Node.js"</span>, <span class="text-[#a5d6ff]">"Go"</span>, <span class="text-[#a5d6ff]">"Python"</span>, <span class="text-[#a5d6ff]">"Kubernetes"</span>],
+  <span class="text-[#a5d6ff]">"sla"</span>: <span class="text-[#a5d6ff]">"99.999% Zero-Downtime Guarantee"</span>
 };`,
-`<span class="text-[#8b949e]"># Service: Cloud Engineering & DevOps</span>
-<span class="text-[#ff7b72]">stages</span>:
-  - <span class="text-[#a5d6ff]">build</span>
-  - <span class="text-[#a5d6ff]">test</span>
-  - <span class="text-[#a5d6ff]">deploy</span>
+`<span class="text-[#8b949e]">/* Service: Mobile Development */</span>
+<span class="text-[#ff7b72]">import</span> SwiftUI
 
-<span class="text-[#79c0ff]">production_deploy</span>:
-  <span class="text-[#a5d6ff]">script</span>:
-    - <span class="text-[#a5d6ff]">echo "Deploying to Kubernetes cluster..."</span>
-    - <span class="text-[#a5d6ff]">kubectl apply -f k8s/</span>`,
+<span class="text-[#ff7b72]">struct</span> <span class="text-[#79c0ff]">MobileEngineering</span>: <span class="text-[#79c0ff]">View</span> {
+    <span class="text-[#ff7b72]">let</span> service = <span class="text-[#a5d6ff]">"Mobile Development"</span>
+    <span class="text-[#ff7b72]">let</span> tagline = <span class="text-[#a5d6ff]">"High-Performance Native & Cross-Platform"</span>
+    <span class="text-[#ff7b72]">let</span> frameworks = [<span class="text-[#a5d6ff]">"SwiftUI"</span>, <span class="text-[#a5d6ff]">"Kotlin"</span>, <span class="text-[#a5d6ff]">"React Native"</span>, <span class="text-[#a5d6ff]">"Flutter"</span>]
+    <span class="text-[#ff7b72]">let</span> features = [<span class="text-[#a5d6ff]">"Offline Sync"</span>, <span class="text-[#a5d6ff]">"Local Caching"</span>, <span class="text-[#a5d6ff]">"Native Hardware"</span>]
+}`,
 `<span class="text-[#8b949e]">/**
- * Service: Cybersecurity & Cloud Security
- */</span>
-<span class="text-[#ff7b72]">export const</span> <span class="text-[#79c0ff]">securityConfig</span> = {
-  <span class="text-[#a5d6ff]">"encryption"</span>: <span class="text-[#a5d6ff]">"AES-256"</span>,
-  <span class="text-[#a5d6ff]">"compliance"</span>: [<span class="text-[#a5d6ff]">"SOC2"</span>, <span class="text-[#a5d6ff]">"HIPAA"</span>, <span class="text-[#a5d6ff]">"GDPR"</span>],
-  <span class="text-[#a5d6ff]">"firewall"</span>: <span class="text-[#79c0ff]">true</span>,
-  <span class="text-[#a5d6ff]">"zero_trust"</span>: <span class="text-[#79c0ff]">true</span>
-};`,
-`<span class="text-[#8b949e]"># Service: AI & Data Solutions</span>
-<span class="text-[#ff7b72]">import</span> pandas <span class="text-[#ff7b72]">as</span> pd
-<span class="text-[#ff7b72]">from</span> sklearn.model_selection <span class="text-[#ff7b72]">import</span> train_test_split
-<span class="text-[#ff7b72]">from</span> transformers <span class="text-[#ff7b72]">import</span> pipeline
-
-<span class="text-[#8b949e]"># Initialize GenAI model pipeline</span>
-generator = pipeline(<span class="text-[#a5d6ff]">'text-generation'</span>, model=<span class="text-[#a5d6ff]">'gpt-4'</span>)
-results = generator(<span class="text-[#a5d6ff]'>"Optimize data pipelines for speed."</span>)`,
-`<span class="text-[#8b949e]">/**
- * Service: UI/UX Design
- */</span>
-<span class="text-[#ff7b72]">import</span> React <span class="text-[#ff7b72]">from</span> <span class="text-[#a5d6ff]">'react'</span>;
-
-<span class="text-[#ff7b72]">export const</span> <span class="text-[#79c0ff]">DesignSystem</span> = () =&gt; (
-  <span class="text-[#79c0ff]">&lt;ThemeProvider</span> <span class="text-[#a5d6ff]">theme</span>=<span class="text-[#a5d6ff]">"dark"</span><span class="text-[#79c0ff]">&gt;</span>
-    <span class="text-[#79c0ff]">&lt;Button</span> <span class="text-[#a5d6ff]">variant</span>=<span class="text-[#a5d6ff]">"primary"</span><span class="text-[#79c0ff]">&gt;</span>User-Centric Design<span class="text-[#79c0ff]">&lt;/Button&gt;</span>
-  <span class="text-[#79c0ff]">&lt;/ThemeProvider&gt;</span>
-);`,
-`<span class="text-[#8b949e]">/**
- * Service: Quality Assurance & Automation
+ * Service: QA & Testing
  */</span>
 <span class="text-[#ff7b72]">import</span> { test, expect } <span class="text-[#ff7b72]">from</span> <span class="text-[#a5d6ff]">'@playwright/test'</span>;
 
-test(<span class="text-[#a5d6ff]">'automated integration checks pass'</span>, <span class="text-[#ff7b72]">async</span> ({ page }) =&gt; {
-  <span class="text-[#ff7b72]">await</span> page.goto(<span class="text-[#a5d6ff]">'/production'</span>);
-  <span class="text-[#ff7b72]">await</span> expect(page.locator(<span class="text-[#a5d6ff]">'#status'</span>)).toHaveText(<span class="text-[#a5d6ff]">'All systems nominal'</span>);
+test(<span class="text-[#a5d6ff]">'end-to-end system reliability and defect prevention pass'</span>, <span class="text-[#ff7b72]">async</span> ({ page }) =&gt; {
+  <span class="text-[#ff7b72]">await</span> page.goto(<span class="text-[#a5d6ff]">'/production-release'</span>);
+  <span class="text-[#ff7b72]">await</span> expect(page.locator(<span class="text-[#a5d6ff]'#defect-free-score'</span>)).toHaveText(<span class="text-[#a5d6ff]'100% Verified'</span>);
 });`,
 `<span class="text-[#8b949e]">/**
- * Service: Dedicated Engineering Teams
+ * Service: Staff Augmentation
  */</span>
-<span class="text-[#ff7b72]">export const</span> <span class="text-[#79c0ff]">teamStructure</span> = {
-  <span class="text-[#a5d6ff]">"model"</span>: <span class="text-[#a5d6ff]">"Embedded Pods"</span>,
-  <span class="text-[#a5d6ff]">"composition"</span>: [
-    <span class="text-[#a5d6ff]">"Tech Lead"</span>,
-    <span class="text-[#a5d6ff]">"Senior Full-Stack Engineers"</span>,
-    <span class="text-[#a5d6ff]">"QA Automation Engineer"</span>
+<span class="text-[#ff7b72]">export const</span> <span class="text-[#79c0ff]">staffAugmentation</span> = {
+  <span class="text-[#a5d6ff]">"service"</span>: <span class="text-[#a5d6ff]">"Staff Augmentation"</span>,
+  <span class="text-[#a5d6ff]">"tagline"</span>: <span class="text-[#a5d6ff]">"Flexible Technical Capacity & Embedded Pods"</span>,
+  <span class="text-[#a5d6ff]">"capacity_models"</span>: [
+    <span class="text-[#a5d6ff]">"Fractional Specialized Engineers"</span>,
+    <span class="text-[#a5d6ff]">"Full-Time Dedicated Engineering Pods"</span>
   ],
-  <span class="text-[#a5d6ff]">"agile_workflow"</span>: <span class="text-[#a5d6ff]">"Scrum/Kanban"</span>
-};`,
-`<span class="text-[#8b949e]">/* Service: Mobile App Development */</span>
-<span class="text-[#ff7b72]">import</span> SwiftUI
-
-<span class="text-[#ff7b72]">struct</span> MobileView: <span class="text-[#79c0ff]">View</span> {
-    <span class="text-[#ff7b72]">var</span> body: <span class="text-[#ff7b72]">some</span> <span class="text-[#79c0ff]">View</span> {
-        VStack {
-            Text(<span class="text-[#a5d6ff]">"High-Performance iOS App"</span>)
-                .font(.largeTitle)
-                .foregroundColor(.blue)
-        }
-    }
-}`,
-`<span class="text-[#8b949e]"># Service: API Development & System Integration</span>
-<span class="text-[#ff7b72]">type</span> <span class="text-[#79c0ff]">Query</span> {
-  <span class="text-[#79c0ff]">systemStatus</span>: <span class="text-[#79c0ff]">String!</span>
-  <span class="text-[#79c0ff]">fetchData</span>(<span class="text-[#a5d6ff]">source</span>: <span class="text-[#79c0ff]">String!</span>): <span class="text-[#79c0ff]">JSON!</span>
-}
-
-<span class="text-[#ff7b72]">type</span> <span class="text-[#79c0ff]">Mutation</span> {
-  <span class="text-[#79c0ff]">integrateSystem</span>(<span class="text-[#a5d6ff]">config</span>: <span class="text-[#79c0ff]">ConfigInput!</span>): <span class="text-[#79c0ff]">Boolean!</span>
-}`
+  <span class="text-[#a5d6ff]">"vetting_standard"</span>: <span class="text-[#a5d6ff]">"Top 1% Global Engineering Talent"</span>
+};`
     ];
 
     let currentServiceIndex = -1;
     
-    $(document).off('mouseenter', '.animate-\\[spin_60s_linear_infinite_reverse\\] > button');
-    $(document).on('mouseenter', '.animate-\\[spin_60s_linear_infinite_reverse\\] > button', function() {
-      const serviceNodes = $('.animate-\\[spin_60s_linear_infinite_reverse\\] > button');
+    $(document).off('mouseenter click', '.animate-\\[spin_60s_linear_infinite_reverse\\] > button');
+    $(document).on('mouseenter click', '.animate-\\[spin_60s_linear_infinite_reverse\\] > button', function(e) {
+      const section = $(this).closest('section');
+      const serviceNodes = section.find('.animate-\\[spin_60s_linear_infinite_reverse\\] > button');
       const index = serviceNodes.index(this);
+      
+      if (e && e.originalEvent) {
+        // User manually interacted, stop auto-scrolling
+        const container = section.find('.animate-\\[spin_60s_linear_infinite\\]').parent();
+        clearInterval(container.data('terminal-interval'));
+      }
       
       // Update the visual state of all nodes
       serviceNodes.each(function(i) {
@@ -677,64 +737,13 @@ test(<span class="text-[#a5d6ff]">'automated integration checks pass'</span>, <s
       });
       
       // Update terminal IDE text
-      if (currentServiceIndex !== index && index >= 0 && index < serviceContents.length) {
+      if (index >= 0 && index < serviceContents.length) {
         currentServiceIndex = index;
-        const ideFilenameEl = $('#ide-filename');
-        const ideContentEl = $('#ide-content');
+        const ideFilenameEl = section.find('#ide-filename');
+        const ideContentEl = section.find('#ide-content');
         if (ideFilenameEl.length && ideContentEl.length) {
           ideFilenameEl.text(serviceFiles[index]);
-          // Use typeHTML if it is defined, otherwise fallback
-          if (typeof typeHTML === 'function') {
-             typeHTML(serviceContents[index], ideContentEl);
-          } else {
-             // Fallback definition for typeHTML
-             
-             
-             
-             clearInterval(ideContentEl.data('typeInterval'));
-             ideContentEl.html('');
-             const tokens = [];
-             let i = 0;
-             const htmlStr = serviceContents[index];
-             while(i < htmlStr.length) {
-                 if (htmlStr[i] === '<') {
-                     let closingIdx = htmlStr.indexOf('>', i);
-                     if (closingIdx !== -1) {
-                         tokens.push(htmlStr.substring(i, closingIdx + 1));
-                         i = closingIdx + 1;
-                         continue;
-                     }
-                 }
-                 if (htmlStr[i] === '&') {
-                     let semiIdx = htmlStr.indexOf(';', i);
-                     if (semiIdx !== -1 && semiIdx - i < 10) {
-                         tokens.push(htmlStr.substring(i, semiIdx + 1));
-                         i = semiIdx + 1;
-                         continue;
-                     }
-                 }
-                 tokens.push(htmlStr[i]);
-                 i++;
-             }
-             
-             let tokenIndex = 0;
-             let currentHtml = '';
-             const interval = setInterval(() => {
-                 while (tokenIndex < tokens.length && tokens[tokenIndex].startsWith('<')) {
-                     currentHtml += tokens[tokenIndex];
-                     tokenIndex++;
-                 }
-                 if (tokenIndex < tokens.length) {
-                     currentHtml += tokens[tokenIndex];
-                     tokenIndex++;
-                     ideContentEl.html(currentHtml);
-                 } else {
-                     ideContentEl.html(currentHtml);
-                     clearInterval(interval);
-                 }
-             }, 10);
-             ideContentEl.data('typeInterval', interval);
-          }
+          typeHTML(serviceContents[index], ideContentEl);
         }
       }
     });
