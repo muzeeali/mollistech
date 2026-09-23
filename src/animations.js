@@ -69,37 +69,7 @@ export function initAnimations() {
     observer.observe(this);
   });
 
-  const scrollTerminalObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        let index = 0;
-        const buttons = $(entry.target).find('button.relative');
-        if (buttons.length > 0) {
-          // Trigger first one immediately so it types out like a terminal
-          $(buttons[0]).trigger('mouseenter');
-          index++;
-          const interval = setInterval(() => {
-            if (index >= buttons.length) {
-              clearInterval(interval);
-              return;
-            }
-            $(buttons[index]).trigger('mouseenter');
-            setTimeout(() => {
-              $(buttons[index-1]).trigger('mouseleave');
-            }, 100);
-            index++;
-          }, 2000);
-          $(entry.target).data('terminal-interval', interval);
-        }
-      } else {
-        clearInterval($(entry.target).data('terminal-interval'));
-      }
-    });
-  }, { threshold: 0.5 });
-  
-  $('.animate-\\[spin_60s_linear_infinite_reverse\\]').parent().parent().each(function() {
-    scrollTerminalObserver.observe(this);
-  });
+
 
   // Ensure events are attached only once
   $(document).off('click', '.cursor-pointer.transition-all');
@@ -700,50 +670,66 @@ test(<span class="text-[#a5d6ff]">'end-to-end system reliability and defect prev
 };`
     ];
 
+    const serviceNames = [
+      "Paid Advertising",
+      "SEO",
+      "Social Media",
+      "Content Production",
+      "App Marketing",
+      "Brand Identity",
+      "System Integration",
+      "UI/UX Design",
+      "Custom Software",
+      "Mobile Development",
+      "QA & Testing",
+      "Staff Augmentation"
+    ];
+
     let currentServiceIndex = -1;
     
     $(document).off('mouseenter click', '.animate-\\[spin_60s_linear_infinite_reverse\\] > button');
-    $(document).on('mouseenter click', '.animate-\\[spin_60s_linear_infinite_reverse\\] > button', function(e) {
+    $(document).on('mouseenter click', '.animate-\\[spin_60s_linear_infinite_reverse\\] > button', function() {
       const section = $(this).closest('section');
       const serviceNodes = section.find('.animate-\\[spin_60s_linear_infinite_reverse\\] > button');
       const index = serviceNodes.index(this);
-      
-      if (e && e.originalEvent) {
-        // User manually interacted, stop auto-scrolling
-        const container = section.find('.animate-\\[spin_60s_linear_infinite\\]').parent();
-        clearInterval(container.data('terminal-interval'));
-      }
       
       // Update the visual state of all nodes
       serviceNodes.each(function(i) {
         const btn = $(this);
         const container = btn.parent().parent();
         const line = container.find('line');
-        const label = btn.next('div');
         
         if (i === index) {
           // Active state
           btn.removeClass('bg-[#0d1117] border-[#30363d] text-[#8b949e]')
              .addClass('bg-[#161b22] border-[#58a6ff] text-[#58a6ff] scale-125 shadow-[0_0_20px_rgba(88,166,255,0.4)]');
           line.attr('stroke', '#58a6ff').attr('stroke-width', '2');
-          label.removeClass('text-[#8b949e] opacity-0').addClass('text-[#58a6ff] opacity-100');
         } else {
           // Inactive state
           btn.removeClass('bg-[#161b22] border-[#58a6ff] text-[#58a6ff] scale-125 shadow-[0_0_20px_rgba(88,166,255,0.4)]')
              .addClass('bg-[#0d1117] border-[#30363d] text-[#8b949e]');
           line.attr('stroke', 'rgba(255,255,255,0.05)').attr('stroke-width', '1');
-          label.removeClass('text-[#58a6ff] opacity-100').addClass('text-[#8b949e] opacity-0');
         }
       });
       
+      // Update center text
+      if (index >= 0 && index < serviceNames.length) {
+        const centerTextEl = section.find('.topology-center-text');
+        if (centerTextEl.length) {
+          centerTextEl.text(serviceNames[index]);
+        }
+      }
+
       // Update terminal IDE text
       if (index >= 0 && index < serviceContents.length) {
-        currentServiceIndex = index;
-        const ideFilenameEl = section.find('#ide-filename');
-        const ideContentEl = section.find('#ide-content');
-        if (ideFilenameEl.length && ideContentEl.length) {
-          ideFilenameEl.text(serviceFiles[index]);
-          typeHTML(serviceContents[index], ideContentEl);
+        if (currentServiceIndex !== index) {
+          currentServiceIndex = index;
+          const ideFilenameEl = section.find('#ide-filename');
+          const ideContentEl = section.find('#ide-content');
+          if (ideFilenameEl.length && ideContentEl.length) {
+            ideFilenameEl.text(serviceFiles[index]);
+            typeHTML(serviceContents[index], ideContentEl);
+          }
         }
       }
     });
