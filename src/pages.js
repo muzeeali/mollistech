@@ -365,33 +365,37 @@ export const page_home = `<section id="hero-slider" class="relative w-full h-[85
       </div>
     </div>
   </div>
-</section></div><section class="client-logos py-24 bg-[#0B0C0E] border-y border-[rgba(255,255,255,0.07)] position-relative overflow-hidden"><style>
-        @keyframes marquee-scroll {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-33.3333%);
-          }
-        }
-        .logos-track {
-          display: flex;
-          width: max-content;
-          animation: marquee-scroll 22s linear infinite;
-        }
-        .logos-track:hover {
-          animation-play-state: paused;
-        }
-        .logo-item {
-          filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.05));
-          opacity: 0.85;
-          transition: all 0.3s ease;
-        }
-        .logo-item:hover {
-          opacity: 1;
-          filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.12));
-        }
-      </style></section><section class="py-24 bg-[#0B0C0E] border-t border-[rgba(255,255,255,0.07)]">
+</section></div><section class="py-16 md:py-20 bg-[#0B0C0E] text-white border-y border-[rgba(255,255,255,0.08)] relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px); background-size: 30px 30px;"></div>
+    <div class="container max-w-7xl mx-auto px-4 md:px-8 relative z-10">
+      <div class="row g-6 text-center md:text-left">
+        <div class="col-6 col-md-3">
+          <div class="p-6 rounded-2xl bg-[#161A22] border border-[rgba(255,255,255,0.08)] backdrop-blur-sm hover:border-[#c85319]/40 transition-all duration-300">
+            <div class="text-4xl md:text-6xl font-black text-[#FFFFFF] mb-2 tracking-tight">74+</div>
+            <div class="text-xs md:text-sm font-mono text-[#9CA3AF] uppercase tracking-wider">Brands Scaled Since 2016</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="p-6 rounded-2xl bg-[#161A22] border border-[rgba(255,255,255,0.08)] backdrop-blur-sm hover:border-[#c85319]/40 transition-all duration-300">
+            <div class="text-4xl md:text-6xl font-black text-[#FFFFFF] mb-2 tracking-tight">€38M</div>
+            <div class="text-xs md:text-sm font-mono text-[#9CA3AF] uppercase tracking-wider">Ad Spend Managed</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="p-6 rounded-2xl bg-[#161A22] border border-[rgba(255,255,255,0.08)] backdrop-blur-sm hover:border-[#c85319]/40 transition-all duration-300">
+            <div class="text-4xl md:text-6xl font-black text-[#FFFFFF] mb-2 tracking-tight">4.6x</div>
+            <div class="text-xs md:text-sm font-mono text-[#9CA3AF] uppercase tracking-wider">Median Blended Return</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="p-6 rounded-2xl bg-[#161A22] border border-[rgba(255,255,255,0.08)] backdrop-blur-sm hover:border-[#c85319]/40 transition-all duration-300">
+            <div class="text-4xl md:text-6xl font-black text-[#FFFFFF] mb-2 tracking-tight">11</div>
+            <div class="text-xs md:text-sm font-mono text-[#9CA3AF] uppercase tracking-wider">In-House Engineers</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section><section class="py-24 bg-[#0B0C0E] border-t border-[rgba(255,255,255,0.07)]">
   <div class="container max-w-7xl mx-auto px-4 md:px-8">
     <div class="row gy-5 items-center">
       <div class="col-lg-6 pr-lg-12">
