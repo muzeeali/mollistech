@@ -76,15 +76,15 @@ export function initAnimations() {
   $(document).on('click', '.cursor-pointer.transition-all', function() {
     if ($(this).find('.font-mono').length) {
       $(this).siblings().each(function() {
-        $(this).removeClass('bg-[#0a1224] border-l-[#58a6ff]').addClass('hover:bg-[#060b18] border-l-transparent');
-        $(this).find('h3').removeClass('text-white').addClass('text-gray-500');
-        $(this).find('.font-mono').removeClass('text-[#58a6ff]').addClass('text-[#1868DB]/40');
+        $(this).removeClass('bg-[#161A22] border-l-[#FFFFFF]').addClass('hover:bg-[#111419] border-l-transparent');
+        $(this).find('h3').removeClass('text-white').addClass('text-[#9CA3AF]');
+        $(this).find('.font-mono').removeClass('text-[#FFFFFF]').addClass('text-white/60');
         $(this).find('.overflow-hidden').css('max-height', '0px').css('opacity', '0').removeClass('mt-6');
       });
       
-      $(this).addClass('bg-[#0a1224] border-l-[#58a6ff]').removeClass('hover:bg-[#060b18] border-l-transparent');
-      $(this).find('h3').addClass('text-white').removeClass('text-gray-500');
-      $(this).find('.font-mono').addClass('text-[#58a6ff]').removeClass('text-[#1868DB]/40');
+      $(this).addClass('bg-[#161A22] border-l-[#FFFFFF]').removeClass('hover:bg-[#111419] border-l-transparent');
+      $(this).find('h3').addClass('text-white').removeClass('text-[#9CA3AF]');
+      $(this).find('.font-mono').addClass('text-[#FFFFFF]').removeClass('text-white/60');
       $(this).find('.overflow-hidden').css('max-height', '200px').css('opacity', '1').addClass('mt-6');
     }
   });
@@ -145,11 +145,11 @@ export function initAnimations() {
       if (title.includes(key) || key.includes(title)) {
         const terminalHeader = contextEl.find('.bi-file-earmark-code').parent();
         if(terminalHeader.length) {
-          terminalHeader.html(`<i class="bi bi-file-earmark-code text-[#8b949e] mr-2"></i>${servicesData[key].filename}<i class="bi bi-x ml-4 text-[#8b949e] hover:text-[#e6edf3] cursor-pointer"></i>`);
+          terminalHeader.html(`<i class="bi bi-file-earmark-code text-[#9CA3AF] mr-2"></i>${servicesData[key].filename}<i class="bi bi-x ml-4 text-[#9CA3AF] hover:text-[#F9FAFB] cursor-pointer"></i>`);
           
           let code = servicesData[key].content;
-          code = code.replace(/("[^"]*")/g, '<span class="text-[#a5d6ff]">$1</span>');
-          code = code.replace(/(\b(?:def|return|export|const|describe|it|expect|struct|let|type)\b)/g, '<span class="text-[#ff7b72]">$1</span>');
+          code = code.replace(/("[^"]*")/g, '<span class="text-[#F9FAFB]">$1</span>');
+          code = code.replace(/(\b(?:def|return|export|const|describe|it|expect|struct|let|type)\b)/g, '<span class="text-[#FFFFFF]">$1</span>');
           
           const lines = code.split('\n');
           let numbersHtml = '';
@@ -167,8 +167,8 @@ export function initAnimations() {
     }
   };
 
-  $(document).off('mouseenter', 'tr.group, .service-item, .group.hover\\:bg-\\[\\#1868DB\\]');
-  $(document).on('mouseenter', 'tr.group, .service-item, .group.hover\\:bg-\\[\\#1868DB\\]', function() {
+  $(document).off('mouseenter', 'tr.group, .service-item, .group.hover\\:bg-\\[\\#FFFFFF\\]');
+  $(document).on('mouseenter', 'tr.group, .service-item, .group.hover\\:bg-\\[\\#FFFFFF\\]', function() {
     const title = $(this).find('h2').text().trim() || $(this).find('h3').text().trim() || $(this).text().trim();
     const contextEl = $(this).closest('main');
     updateTerminal(title, contextEl);
@@ -185,13 +185,13 @@ export function initAnimations() {
     const buttons = heroSlider.find('.bottom-12 button');
     buttons.each(function(i) {
       if (i === index) {
-        $(this).find('.w-3.h-3').removeClass('border-gray-400 group-hover:border-[#1868DB] bg-transparent').addClass('bg-[#1868DB] border-[#1868DB]');
-        $(this).find('span').removeClass('text-gray-500 group-hover:text-[#101214]').addClass('text-[#101214]');
-        $(this).find('.bottom-0').removeClass('bg-gray-200 opacity-0 group-hover:opacity-100').addClass('bg-[#1868DB]').css('opacity', '1');
+        $(this).find('.w-3.h-3').removeClass('border-gray-400 group-hover:border-[#FFFFFF] bg-transparent').addClass('bg-[#FFFFFF] border-[#FFFFFF]');
+        $(this).find('span').removeClass('text-[#9CA3AF] group-hover:text-white').addClass('text-white');
+        $(this).find('.bottom-0').removeClass('bg-white/20 opacity-0 group-hover:opacity-100').addClass('bg-[#FFFFFF]').css('opacity', '1');
       } else {
-        $(this).find('.w-3.h-3').removeClass('bg-[#1868DB] border-[#1868DB]').addClass('border-gray-400 group-hover:border-[#1868DB] bg-transparent');
-        $(this).find('span').removeClass('text-[#101214]').addClass('text-gray-500 group-hover:text-[#101214]');
-        $(this).find('.bottom-0').removeClass('bg-[#1868DB]').addClass('bg-gray-200 opacity-0 group-hover:opacity-100').css('opacity', '');
+        $(this).find('.w-3.h-3').removeClass('bg-[#FFFFFF] border-[#FFFFFF]').addClass('border-gray-400 group-hover:border-[#FFFFFF] bg-transparent');
+        $(this).find('span').removeClass('text-white').addClass('text-[#9CA3AF] group-hover:text-white');
+        $(this).find('.bottom-0').removeClass('bg-[#FFFFFF]').addClass('bg-white/20 opacity-0 group-hover:opacity-100').css('opacity', '');
       }
     });
     
@@ -260,7 +260,7 @@ export function initAnimations() {
       if(buttons.length > 0) {
         let activeIndex = -1;
         buttons.each(function(i) {
-          if ($(this).find('span.text-\\[\\#101214\\]').length > 0 || $(this).find('span').hasClass('text-[#101214]')) {
+          if ($(this).find('span.text-white').length > 0 || $(this).find('span').hasClass('text-white')) {
              activeIndex = i;
           }
         });
@@ -291,72 +291,72 @@ export function initAnimations() {
   "system-integration.json"
 ];
 
-  const ideContents = [`<span class="text-[#8b949e]">/**
+  const ideContents = [`<span class="text-[#9CA3AF]">/**
  * Service Module: Paid Advertising
  */</span>
-<span class="text-[#ff7b72]">export const</span> <span class="text-[#79c0ff]">campaignData</span> = {
-  <span class="text-[#a5d6ff]">"title"</span>: <span class="text-[#a5d6ff]">"Data-Driven Campaigns"</span>,
-  <span class="text-[#a5d6ff]">"description"</span>: <span class="text-[#a5d6ff]">"Maximize your ROI with targeted ad placements, rigorous A/B testing, and data-backed performance marketing strategies."</span>,
-  <span class="text-[#a5d6ff]">"channels"</span>: [
-    <span class="text-[#a5d6ff]">"Google Ads"</span>,
-    <span class="text-[#a5d6ff]">"Meta Ads"</span>,
-    <span class="text-[#a5d6ff]">"LinkedIn Ads"</span>,
-    <span class="text-[#a5d6ff]">"Programmatic"</span>
+<span class="text-[#FFFFFF]">export const</span> <span class="text-[#FFFFFF]">campaignData</span> = {
+  <span class="text-[#F9FAFB]">"title"</span>: <span class="text-[#F9FAFB]">"Data-Driven Campaigns"</span>,
+  <span class="text-[#F9FAFB]">"description"</span>: <span class="text-[#F9FAFB]">"Maximize your ROI with targeted ad placements, rigorous A/B testing, and data-backed performance marketing strategies."</span>,
+  <span class="text-[#F9FAFB]">"channels"</span>: [
+    <span class="text-[#F9FAFB]">"Google Ads"</span>,
+    <span class="text-[#F9FAFB]">"Meta Ads"</span>,
+    <span class="text-[#F9FAFB]">"LinkedIn Ads"</span>,
+    <span class="text-[#F9FAFB]">"Programmatic"</span>
   ]
-};`,`<span class="text-[#8b949e]">/**
+};`,`<span class="text-[#9CA3AF]">/**
  * Service Module: SEO
  */</span>
-<span class="text-[#ff7b72]">export const</span> <span class="text-[#79c0ff]">seoData</span> = {
-  <span class="text-[#a5d6ff]">"title"</span>: <span class="text-[#a5d6ff]">"Search Engine Optimization"</span>,
-  <span class="text-[#a5d6ff]">"description"</span>: <span class="text-[#a5d6ff]">"Increase your visibility and drive high-quality organic traffic through technical SEO, optimized content, and authoritative link building."</span>,
-  <span class="text-[#a5d6ff]">"tactics"</span>: [
-    <span class="text-[#a5d6ff]">"Technical SEO"</span>,
-    <span class="text-[#a5d6ff]">"Content Strategy"</span>,
-    <span class="text-[#a5d6ff]">"Link Building"</span>
+<span class="text-[#FFFFFF]">export const</span> <span class="text-[#FFFFFF]">seoData</span> = {
+  <span class="text-[#F9FAFB]">"title"</span>: <span class="text-[#F9FAFB]">"Search Engine Optimization"</span>,
+  <span class="text-[#F9FAFB]">"description"</span>: <span class="text-[#F9FAFB]">"Increase your visibility and drive high-quality organic traffic through technical SEO, optimized content, and authoritative link building."</span>,
+  <span class="text-[#F9FAFB]">"tactics"</span>: [
+    <span class="text-[#F9FAFB]">"Technical SEO"</span>,
+    <span class="text-[#F9FAFB]">"Content Strategy"</span>,
+    <span class="text-[#F9FAFB]">"Link Building"</span>
   ]
-};`,`<span class="text-[#8b949e]">/**
+};`,`<span class="text-[#9CA3AF]">/**
  * Service Module: Social Media
  */</span>
-<span class="text-[#ff7b72]">export const</span> <span class="text-[#79c0ff]">socialData</span> = {
-  <span class="text-[#a5d6ff]">"title"</span>: <span class="text-[#a5d6ff]">"Social Media Marketing"</span>,
-  <span class="text-[#a5d6ff]">"description"</span>: <span class="text-[#a5d6ff]">"Build brand loyalty and community through strategic content, proactive engagement, and targeted social campaigns."</span>,
-  <span class="text-[#a5d6ff]">"platforms"</span>: [
-    <span class="text-[#a5d6ff]">"Instagram"</span>,
-    <span class="text-[#a5d6ff]">"TikTok"</span>,
-    <span class="text-[#a5d6ff]">"LinkedIn"</span>
+<span class="text-[#FFFFFF]">export const</span> <span class="text-[#FFFFFF]">socialData</span> = {
+  <span class="text-[#F9FAFB]">"title"</span>: <span class="text-[#F9FAFB]">"Social Media Marketing"</span>,
+  <span class="text-[#F9FAFB]">"description"</span>: <span class="text-[#F9FAFB]">"Build brand loyalty and community through strategic content, proactive engagement, and targeted social campaigns."</span>,
+  <span class="text-[#F9FAFB]">"platforms"</span>: [
+    <span class="text-[#F9FAFB]">"Instagram"</span>,
+    <span class="text-[#F9FAFB]">"TikTok"</span>,
+    <span class="text-[#F9FAFB]">"LinkedIn"</span>
   ]
-};`,`<span class="text-[#8b949e]">/**
+};`,`<span class="text-[#9CA3AF]">/**
  * Service Module: Software Development
  */</span>
-<span class="text-[#ff7b72]">export const</span> <span class="text-[#79c0ff]">softwareData</span> = {
-  <span class="text-[#a5d6ff]">"title"</span>: <span class="text-[#a5d6ff]">"Custom Software Engineering"</span>,
-  <span class="text-[#a5d6ff]">"description"</span>: <span class="text-[#a5d6ff]">"We design and develop secure, maintainable, and high-performance software for web, mobile, and enterprise environments."</span>,
-  <span class="text-[#a5d6ff]">"stack"</span>: [
-    <span class="text-[#a5d6ff]">"React"</span>,
-    <span class="text-[#a5d6ff]">"Node.js"</span>,
-    <span class="text-[#a5d6ff]">"Python"</span>
+<span class="text-[#FFFFFF]">export const</span> <span class="text-[#FFFFFF]">softwareData</span> = {
+  <span class="text-[#F9FAFB]">"title"</span>: <span class="text-[#F9FAFB]">"Custom Software Engineering"</span>,
+  <span class="text-[#F9FAFB]">"description"</span>: <span class="text-[#F9FAFB]">"We design and develop secure, maintainable, and high-performance software for web, mobile, and enterprise environments."</span>,
+  <span class="text-[#F9FAFB]">"stack"</span>: [
+    <span class="text-[#F9FAFB]">"React"</span>,
+    <span class="text-[#F9FAFB]">"Node.js"</span>,
+    <span class="text-[#F9FAFB]">"Python"</span>
   ]
-};`,`<span class="text-[#8b949e]">/**
+};`,`<span class="text-[#9CA3AF]">/**
  * Service Module: UI/UX
  */</span>
-<span class="text-[#ff7b72]">export const</span> <span class="text-[#79c0ff]">designData</span> = {
-  <span class="text-[#a5d6ff]">"title"</span>: <span class="text-[#a5d6ff]">"User Interface & Experience"</span>,
-  <span class="text-[#a5d6ff]">"description"</span>: <span class="text-[#a5d6ff]">"Simplify complex workflows with pixel-perfect, user-centric interfaces designed for modern users."</span>,
-  <span class="text-[#a5d6ff]">"tools"</span>: [
-    <span class="text-[#a5d6ff]">"Figma"</span>,
-    <span class="text-[#a5d6ff]">"Framer"</span>,
-    <span class="text-[#a5d6ff]">"Webflow"</span>
+<span class="text-[#FFFFFF]">export const</span> <span class="text-[#FFFFFF]">designData</span> = {
+  <span class="text-[#F9FAFB]">"title"</span>: <span class="text-[#F9FAFB]">"User Interface & Experience"</span>,
+  <span class="text-[#F9FAFB]">"description"</span>: <span class="text-[#F9FAFB]">"Simplify complex workflows with pixel-perfect, user-centric interfaces designed for modern users."</span>,
+  <span class="text-[#F9FAFB]">"tools"</span>: [
+    <span class="text-[#F9FAFB]">"Figma"</span>,
+    <span class="text-[#F9FAFB]">"Framer"</span>,
+    <span class="text-[#F9FAFB]">"Webflow"</span>
   ]
-};`,`<span class="text-[#8b949e]">/**
+};`,`<span class="text-[#9CA3AF]">/**
  * Service Module: System Integration
  */</span>
-<span class="text-[#ff7b72]">export const</span> <span class="text-[#79c0ff]">integrationData</span> = {
-  <span class="text-[#a5d6ff]">"title"</span>: <span class="text-[#a5d6ff]">"Connecting Digital Ecosystems"</span>,
-  <span class="text-[#a5d6ff]">"description"</span>: <span class="text-[#a5d6ff]">"We build robust, secure APIs and seamlessly integrate third-party platforms to automate data flow across your organization."</span>,
-  <span class="text-[#a5d6ff]">"protocols"</span>: [
-    <span class="text-[#a5d6ff]">"REST"</span>,
-    <span class="text-[#a5d6ff]">"GraphQL"</span>,
-    <span class="text-[#a5d6ff]">"WebSockets"</span>
+<span class="text-[#FFFFFF]">export const</span> <span class="text-[#FFFFFF]">integrationData</span> = {
+  <span class="text-[#F9FAFB]">"title"</span>: <span class="text-[#F9FAFB]">"Connecting Digital Ecosystems"</span>,
+  <span class="text-[#F9FAFB]">"description"</span>: <span class="text-[#F9FAFB]">"We build robust, secure APIs and seamlessly integrate third-party platforms to automate data flow across your organization."</span>,
+  <span class="text-[#F9FAFB]">"protocols"</span>: [
+    <span class="text-[#F9FAFB]">"REST"</span>,
+    <span class="text-[#F9FAFB]">"GraphQL"</span>,
+    <span class="text-[#F9FAFB]">"WebSockets"</span>
   ]
 };`];
 
@@ -393,7 +393,7 @@ export function initAnimations() {
         if (progress > threshold) {
           $(this).css('color', targetColor);
         } else {
-          $(this).css('color', 'rgb(229, 231, 235)'); // text-gray-200
+          $(this).css('color', 'rgba(255, 255, 255, 0.25)');
         }
       });
     });
@@ -407,9 +407,9 @@ export function initAnimations() {
   
   if (terminalTriggers.length && terminalContent.length) {
     const terminalTexts = [
-      "\\$ valo architect --init\nBuilding scalable architecture...\n[████████████████████] 100%\n\nStatus: System Robust & Performant.",
-      "\\$ valo deploy --pipeline=production\nRunning zero-downtime deployment...\n[████████████████████] 100%\n\nStatus: All Checks Passed.",
-      "\\$ valo audit --strict\nRunning security audit on production...\n[████████████████████] 100%\n\nResults:\n> 0 Vulnerabilities Found\n> Zero-Trust Configuration: Valid\n> Data Encryption: AES-256 Active\n\nStatus: Secure."
+      "\\$ mollistech architect --init\nBuilding scalable architecture...\n[████████████████████] 100%\n\nStatus: System Robust & Performant.",
+      "\\$ mollistech deploy --pipeline=production\nRunning zero-downtime deployment...\n[████████████████████] 100%\n\nStatus: All Checks Passed.",
+      "\\$ mollistech audit --strict\nRunning security audit on production...\n[████████████████████] 100%\n\nResults:\n> 0 Vulnerabilities Found\n> Zero-Trust Configuration: Valid\n> Data Encryption: AES-256 Active\n\nStatus: Secure."
     ];
     
     let currentTerminalIndex = -1;
@@ -497,7 +497,7 @@ export function initAnimations() {
               imgEl.attr('src', data.image).removeClass('hidden');
             } else {
               imgEl.addClass('hidden');
-              iconEl.attr('class', `${data.icon} text-8xl md:text-9xl text-[#1868DB] opacity-40 transition-all duration-500`).removeClass('hidden');
+              iconEl.attr('class', `${data.icon} text-8xl md:text-9xl text-[#FFFFFF] opacity-40 transition-all duration-500`).removeClass('hidden');
             }
             textEl.text(`${data.title} // ARCHITECTURE`);
             contentEl.css('opacity', '1');
@@ -533,140 +533,140 @@ export function initAnimations() {
     ];
 
     const serviceContents = [
-`<span class="text-[#8b949e]">/**
+`<span class="text-[#9CA3AF]">/**
  * Service: Paid Advertising
  */</span>
-<span class="text-[#ff7b72]">export const</span> <span class="text-[#79c0ff]">adStrategy</span> = {
-  <span class="text-[#a5d6ff]">"service"</span>: <span class="text-[#a5d6ff]">"Paid Advertising"</span>,
-  <span class="text-[#a5d6ff]">"tagline"</span>: <span class="text-[#a5d6ff]">"Media Buying Managed Against Contribution Margin"</span>,
-  <span class="text-[#a5d6ff]">"networks"</span>: [
-    <span class="text-[#a5d6ff]">"Meta"</span>,
-    <span class="text-[#a5d6ff]">"Google"</span>,
-    <span class="text-[#a5d6ff]">"TikTok"</span>,
-    <span class="text-[#a5d6ff]">"Programmatic"</span>
+<span class="text-[#FFFFFF]">export const</span> <span class="text-[#FFFFFF]">adStrategy</span> = {
+  <span class="text-[#F9FAFB]">"service"</span>: <span class="text-[#F9FAFB]">"Paid Advertising"</span>,
+  <span class="text-[#F9FAFB]">"tagline"</span>: <span class="text-[#F9FAFB]">"Media Buying Managed Against Contribution Margin"</span>,
+  <span class="text-[#F9FAFB]">"networks"</span>: [
+    <span class="text-[#F9FAFB]">"Meta"</span>,
+    <span class="text-[#F9FAFB]">"Google"</span>,
+    <span class="text-[#F9FAFB]">"TikTok"</span>,
+    <span class="text-[#F9FAFB]">"Programmatic"</span>
   ],
-  <span class="text-[#a5d6ff]">"optimization"</span>: <span class="text-[#a5d6ff]">"Net Contribution Margins & Blended Returns"</span>
+  <span class="text-[#F9FAFB]">"optimization"</span>: <span class="text-[#F9FAFB]">"Net Contribution Margins & Blended Returns"</span>
 };`,
-`<span class="text-[#8b949e]">/**
+`<span class="text-[#9CA3AF]">/**
  * Service: SEO & Search Dominance
  */</span>
-<span class="text-[#ff7b72]">export const</span> <span class="text-[#79c0ff]">seoEngine</span> = {
-  <span class="text-[#a5d6ff]">"service"</span>: <span class="text-[#a5d6ff]">"SEO"</span>,
-  <span class="text-[#a5d6ff]">"tagline"</span>: <span class="text-[#a5d6ff]">"Technical Audits & Topical Authority Mapping"</span>,
-  <span class="text-[#a5d6ff]">"audits"</span>: [<span class="text-[#a5d6ff]">"Core Web Vitals"</span>, <span class="text-[#a5d6ff]">"Crawl Architecture"</span>, <span class="text-[#a5d6ff]">"Schema"</span>],
-  <span class="text-[#a5d6ff]">"strategy"</span>: [<span class="text-[#a5d6ff]">"Topical Authority Mapping"</span>, <span class="text-[#a5d6ff]">"Digital PR Outreach"</span>],
-  <span class="text-[#a5d6ff]">"outcome"</span>: <span class="text-[#a5d6ff]">"Compounding Organic Pipeline Growth"</span>
+<span class="text-[#FFFFFF]">export const</span> <span class="text-[#FFFFFF]">seoEngine</span> = {
+  <span class="text-[#F9FAFB]">"service"</span>: <span class="text-[#F9FAFB]">"SEO"</span>,
+  <span class="text-[#F9FAFB]">"tagline"</span>: <span class="text-[#F9FAFB]">"Technical Audits & Topical Authority Mapping"</span>,
+  <span class="text-[#F9FAFB]">"audits"</span>: [<span class="text-[#F9FAFB]">"Core Web Vitals"</span>, <span class="text-[#F9FAFB]">"Crawl Architecture"</span>, <span class="text-[#F9FAFB]">"Schema"</span>],
+  <span class="text-[#F9FAFB]">"strategy"</span>: [<span class="text-[#F9FAFB]">"Topical Authority Mapping"</span>, <span class="text-[#F9FAFB]">"Digital PR Outreach"</span>],
+  <span class="text-[#F9FAFB]">"outcome"</span>: <span class="text-[#F9FAFB]">"Compounding Organic Pipeline Growth"</span>
 };`,
-`<span class="text-[#8b949e]"># Service: Social Media Channel Strategy</span>
-<span class="text-[#ff7b72]">channel_orchestration</span>:
-  - <span class="text-[#a5d6ff]">LinkedIn</span>
-  - <span class="text-[#a5d6ff]">Instagram</span>
-  - <span class="text-[#a5d6ff]">TikTok</span>
-  - <span class="text-[#a5d6ff]">X</span>
+`<span class="text-[#9CA3AF]"># Service: Social Media Channel Strategy</span>
+<span class="text-[#FFFFFF]">channel_orchestration</span>:
+  - <span class="text-[#F9FAFB]">LinkedIn</span>
+  - <span class="text-[#F9FAFB]">Instagram</span>
+  - <span class="text-[#F9FAFB]">TikTok</span>
+  - <span class="text-[#F9FAFB]">X</span>
 
-<span class="text-[#79c0ff]">community_engines</span>:
-  <span class="text-[#a5d6ff]">cadence</span>: <span class="text-[#a5d6ff]">"High-Velocity Short-Form Pipelines"</span>
-  <span class="text-[#a5d6ff]">objective</span>: <span class="text-[#a5d6ff]">"Followers to Brand Advocates"</span>
-  <span class="text-[#a5d6ff]">result</span>: <span class="text-[#a5d6ff]">"Compounding Recurring Revenue"</span>`,
-`<span class="text-[#8b949e]">/**
+<span class="text-[#FFFFFF]">community_engines</span>:
+  <span class="text-[#F9FAFB]">cadence</span>: <span class="text-[#F9FAFB]">"High-Velocity Short-Form Pipelines"</span>
+  <span class="text-[#F9FAFB]">objective</span>: <span class="text-[#F9FAFB]">"Followers to Brand Advocates"</span>
+  <span class="text-[#F9FAFB]">result</span>: <span class="text-[#F9FAFB]">"Compounding Recurring Revenue"</span>`,
+`<span class="text-[#9CA3AF]">/**
  * Service: Content Production
  */</span>
-<span class="text-[#ff7b72]">export const</span> <span class="text-[#79c0ff]">creativeStudio</span> = {
-  <span class="text-[#a5d6ff]">"service"</span>: <span class="text-[#a5d6ff]">"Content Production"</span>,
-  <span class="text-[#a5d6ff]">"tagline"</span>: <span class="text-[#a5d6ff]">"High-Impact Video, Motion & Copy Assets"</span>,
-  <span class="text-[#a5d6ff]">"disciplines"</span>: [
-    <span class="text-[#a5d6ff]">"Commercial Video Production"</span>,
-    <span class="text-[#a5d6ff]">"2D/3D Motion Graphics"</span>,
-    <span class="text-[#a5d6ff]">"Product & Studio Photography"</span>,
-    <span class="text-[#a5d6ff]">"Direct-Response Copywriting"</span>
+<span class="text-[#FFFFFF]">export const</span> <span class="text-[#FFFFFF]">creativeStudio</span> = {
+  <span class="text-[#F9FAFB]">"service"</span>: <span class="text-[#F9FAFB]">"Content Production"</span>,
+  <span class="text-[#F9FAFB]">"tagline"</span>: <span class="text-[#F9FAFB]">"High-Impact Video, Motion & Copy Assets"</span>,
+  <span class="text-[#F9FAFB]">"disciplines"</span>: [
+    <span class="text-[#F9FAFB]">"Commercial Video Production"</span>,
+    <span class="text-[#F9FAFB]">"2D/3D Motion Graphics"</span>,
+    <span class="text-[#F9FAFB]">"Product & Studio Photography"</span>,
+    <span class="text-[#F9FAFB]">"Direct-Response Copywriting"</span>
   ],
-  <span class="text-[#a5d6ff]">"focus"</span>: <span class="text-[#a5d6ff]">"Maximum Audience Retention"</span>
+  <span class="text-[#F9FAFB]">"focus"</span>: <span class="text-[#F9FAFB]">"Maximum Audience Retention"</span>
 };`,
-`<span class="text-[#8b949e]">/**
+`<span class="text-[#9CA3AF]">/**
  * Service: App Marketing
  */</span>
-<span class="text-[#ff7b72]">export const</span> <span class="text-[#79c0ff]">appMarketingStack</span> = {
-  <span class="text-[#a5d6ff]">"service"</span>: <span class="text-[#a5d6ff]">"App Marketing"</span>,
-  <span class="text-[#a5d6ff]">"tagline"</span>: <span class="text-[#a5d6ff]">"Scalable User Acquisition Funnels & LiveOps"</span>,
-  <span class="text-[#a5d6ff]">"aso"</span>: [<span class="text-[#a5d6ff]">"Keyword Indexing"</span>, <span class="text-[#a5d6ff]">"Custom Product Pages"</span>, <span class="text-[#a5d6ff]">"A/B Icon/Video Tests"</span>],
-  <span class="text-[#a5d6ff]">"user_acquisition"</span>: [<span class="text-[#a5d6ff]">"Apple Search Ads"</span>, <span class="text-[#a5d6ff]">"Google UAC"</span>, <span class="text-[#a5d6ff]">"Meta & TikTok UA"</span>],
-  <span class="text-[#a5d6ff]">"liveops"</span>: [<span class="text-[#a5d6ff]">"In-App Events"</span>, <span class="text-[#a5d6ff]">"Push Notifications"</span>, <span class="text-[#a5d6ff]">"Retention Frameworks"</span>]
+<span class="text-[#FFFFFF]">export const</span> <span class="text-[#FFFFFF]">appMarketingStack</span> = {
+  <span class="text-[#F9FAFB]">"service"</span>: <span class="text-[#F9FAFB]">"App Marketing"</span>,
+  <span class="text-[#F9FAFB]">"tagline"</span>: <span class="text-[#F9FAFB]">"Scalable User Acquisition Funnels & LiveOps"</span>,
+  <span class="text-[#F9FAFB]">"aso"</span>: [<span class="text-[#F9FAFB]">"Keyword Indexing"</span>, <span class="text-[#F9FAFB]">"Custom Product Pages"</span>, <span class="text-[#F9FAFB]">"A/B Icon/Video Tests"</span>],
+  <span class="text-[#F9FAFB]">"user_acquisition"</span>: [<span class="text-[#F9FAFB]">"Apple Search Ads"</span>, <span class="text-[#F9FAFB]">"Google UAC"</span>, <span class="text-[#F9FAFB]">"Meta & TikTok UA"</span>],
+  <span class="text-[#F9FAFB]">"liveops"</span>: [<span class="text-[#F9FAFB]">"In-App Events"</span>, <span class="text-[#F9FAFB]">"Push Notifications"</span>, <span class="text-[#F9FAFB]">"Retention Frameworks"</span>]
 };`,
-`<span class="text-[#8b949e]">/**
+`<span class="text-[#9CA3AF]">/**
  * Service: Brand Identity
  */</span>
-<span class="text-[#ff7b72]">export const</span> <span class="text-[#79c0ff]">brandArchitecture</span> = {
-  <span class="text-[#a5d6ff]">"service"</span>: <span class="text-[#a5d6ff]">"Brand Identity"</span>,
-  <span class="text-[#a5d6ff]">"tagline"</span>: <span class="text-[#a5d6ff]">"Market-Tested Positioning & Distinctive Brand Voice"</span>,
-  <span class="text-[#a5d6ff]">"elements"</span>: [
-    <span class="text-[#a5d6ff]">"Strategic Brand Narrative"</span>,
-    <span class="text-[#a5d6ff]">"Naming Architecture"</span>,
-    <span class="text-[#a5d6ff]">"Visual Identity Guidelines"</span>,
-    <span class="text-[#a5d6ff]">"Design Collateral Systems"</span>
+<span class="text-[#FFFFFF]">export const</span> <span class="text-[#FFFFFF]">brandArchitecture</span> = {
+  <span class="text-[#F9FAFB]">"service"</span>: <span class="text-[#F9FAFB]">"Brand Identity"</span>,
+  <span class="text-[#F9FAFB]">"tagline"</span>: <span class="text-[#F9FAFB]">"Market-Tested Positioning & Distinctive Brand Voice"</span>,
+  <span class="text-[#F9FAFB]">"elements"</span>: [
+    <span class="text-[#F9FAFB]">"Strategic Brand Narrative"</span>,
+    <span class="text-[#F9FAFB]">"Naming Architecture"</span>,
+    <span class="text-[#F9FAFB]">"Visual Identity Guidelines"</span>,
+    <span class="text-[#F9FAFB]">"Design Collateral Systems"</span>
   ],
-  <span class="text-[#a5d6ff]">"market_impact"</span>: <span class="text-[#a5d6ff]">"High-Value Differentiation in Crowded Spaces"</span>
+  <span class="text-[#F9FAFB]">"market_impact"</span>: <span class="text-[#F9FAFB]">"High-Value Differentiation in Crowded Spaces"</span>
 };`,
-`<span class="text-[#8b949e]"># Service: System Integration & CRM Plumbing</span>
-<span class="text-[#ff7b72]">type</span> <span class="text-[#79c0ff]">SystemIntegration</span> {
-  <span class="text-[#a5d6ff]">service</span>: <span class="text-[#a5d6ff]">"System Integration"</span>
-  <span class="text-[#a5d6ff]">tagline</span>: <span class="text-[#a5d6ff]">"CRM Plumbing, Data Pipelines & Attribution Models"</span>
-  <span class="text-[#a5d6ff]">crm_integrations</span>: [<span class="text-[#a5d6ff]">"Salesforce"</span>, <span class="text-[#a5d6ff]">"HubSpot"</span>, <span class="text-[#a5d6ff]">"Custom Backend"</span>]
-  <span class="text-[#a5d6ff]">data_pipelines</span>: [<span class="text-[#a5d6ff]">"Real-Time Kafka"</span>, <span class="text-[#a5d6ff]">"Airflow Orchestration"</span>]
-  <span class="text-[#a5d6ff]">attribution</span>: <span class="text-[#a5d6ff]">"Multi-Touch Attribution Tracking"</span>
-  <span class="text-[#a5d6ff]">reliability</span>: <span class="text-[#a5d6ff]">"Zero Revenue & Data Leakage"</span>
+`<span class="text-[#9CA3AF]"># Service: System Integration & CRM Plumbing</span>
+<span class="text-[#FFFFFF]">type</span> <span class="text-[#FFFFFF]">SystemIntegration</span> {
+  <span class="text-[#F9FAFB]">service</span>: <span class="text-[#F9FAFB]">"System Integration"</span>
+  <span class="text-[#F9FAFB]">tagline</span>: <span class="text-[#F9FAFB]">"CRM Plumbing, Data Pipelines & Attribution Models"</span>
+  <span class="text-[#F9FAFB]">crm_integrations</span>: [<span class="text-[#F9FAFB]">"Salesforce"</span>, <span class="text-[#F9FAFB]">"HubSpot"</span>, <span class="text-[#F9FAFB]">"Custom Backend"</span>]
+  <span class="text-[#F9FAFB]">data_pipelines</span>: [<span class="text-[#F9FAFB]">"Real-Time Kafka"</span>, <span class="text-[#F9FAFB]">"Airflow Orchestration"</span>]
+  <span class="text-[#F9FAFB]">attribution</span>: <span class="text-[#F9FAFB]">"Multi-Touch Attribution Tracking"</span>
+  <span class="text-[#F9FAFB]">reliability</span>: <span class="text-[#F9FAFB]">"Zero Revenue & Data Leakage"</span>
 }`,
-`<span class="text-[#8b949e]">/**
+`<span class="text-[#9CA3AF]">/**
  * Service: UI/UX Design System
  */</span>
-<span class="text-[#ff7b72]">export const</span> <span class="text-[#79c0ff]">DesignSystem</span> = {
-  <span class="text-[#a5d6ff]">"service"</span>: <span class="text-[#a5d6ff]">"UI/UX Design"</span>,
-  <span class="text-[#a5d6ff]">"tagline"</span>: <span class="text-[#a5d6ff]">"Intuitive Interfaces That Drive User Adoption"</span>,
-  <span class="text-[#a5d6ff]">"artifacts"</span>: [
-    <span class="text-[#a5d6ff]">"Frictionless Wireframes"</span>,
-    <span class="text-[#a5d6ff]">"Interactive Prototypes"</span>,
-    <span class="text-[#a5d6ff]">"Multi-Theme Token Systems"</span>
+<span class="text-[#FFFFFF]">export const</span> <span class="text-[#FFFFFF]">DesignSystem</span> = {
+  <span class="text-[#F9FAFB]">"service"</span>: <span class="text-[#F9FAFB]">"UI/UX Design"</span>,
+  <span class="text-[#F9FAFB]">"tagline"</span>: <span class="text-[#F9FAFB]">"Intuitive Interfaces That Drive User Adoption"</span>,
+  <span class="text-[#F9FAFB]">"artifacts"</span>: [
+    <span class="text-[#F9FAFB]">"Frictionless Wireframes"</span>,
+    <span class="text-[#F9FAFB]">"Interactive Prototypes"</span>,
+    <span class="text-[#F9FAFB]">"Multi-Theme Token Systems"</span>
   ],
-  <span class="text-[#a5d6ff]">"outcomes"</span>: <span class="text-[#a5d6ff]">"Increased Product Adoption & Long-Term Retention"</span>
+  <span class="text-[#F9FAFB]">"outcomes"</span>: <span class="text-[#F9FAFB]">"Increased Product Adoption & Long-Term Retention"</span>
 };`,
-`<span class="text-[#8b949e]">/**
+`<span class="text-[#9CA3AF]">/**
  * Service: Custom Software Development
  */</span>
-<span class="text-[#ff7b72]">export const</span> <span class="text-[#79c0ff]">customSoftware</span> = {
-  <span class="text-[#a5d6ff]">"service"</span>: <span class="text-[#a5d6ff]">"Custom Software"</span>,
-  <span class="text-[#a5d6ff]">"tagline"</span>: <span class="text-[#a5d6ff]">"End-to-End Enterprise Systems & Cloud Foundations"</span>,
-  <span class="text-[#a5d6ff]">"architecture"</span>: [<span class="text-[#a5d6ff]">"Microservices"</span>, <span class="text-[#a5d6ff]">"Multi-Region Cloud"</span>, <span class="text-[#a5d6ff]">"Zero-Trust"</span>],
-  <span class="text-[#a5d6ff]">"stack"</span>: [<span class="text-[#a5d6ff]">"React"</span>, <span class="text-[#a5d6ff]">"Node.js"</span>, <span class="text-[#a5d6ff]">"Go"</span>, <span class="text-[#a5d6ff]">"Python"</span>, <span class="text-[#a5d6ff]">"Kubernetes"</span>],
-  <span class="text-[#a5d6ff]">"sla"</span>: <span class="text-[#a5d6ff]">"99.999% Zero-Downtime Guarantee"</span>
+<span class="text-[#FFFFFF]">export const</span> <span class="text-[#FFFFFF]">customSoftware</span> = {
+  <span class="text-[#F9FAFB]">"service"</span>: <span class="text-[#F9FAFB]">"Custom Software"</span>,
+  <span class="text-[#F9FAFB]">"tagline"</span>: <span class="text-[#F9FAFB]">"End-to-End Enterprise Systems & Cloud Foundations"</span>,
+  <span class="text-[#F9FAFB]">"architecture"</span>: [<span class="text-[#F9FAFB]">"Microservices"</span>, <span class="text-[#F9FAFB]">"Multi-Region Cloud"</span>, <span class="text-[#F9FAFB]">"Zero-Trust"</span>],
+  <span class="text-[#F9FAFB]">"stack"</span>: [<span class="text-[#F9FAFB]">"React"</span>, <span class="text-[#F9FAFB]">"Node.js"</span>, <span class="text-[#F9FAFB]">"Go"</span>, <span class="text-[#F9FAFB]">"Python"</span>, <span class="text-[#F9FAFB]">"Kubernetes"</span>],
+  <span class="text-[#F9FAFB]">"sla"</span>: <span class="text-[#F9FAFB]">"99.999% Zero-Downtime Guarantee"</span>
 };`,
-`<span class="text-[#8b949e]">/* Service: Mobile Development */</span>
-<span class="text-[#ff7b72]">import</span> SwiftUI
+`<span class="text-[#9CA3AF]">/* Service: Mobile Development */</span>
+<span class="text-[#FFFFFF]">import</span> SwiftUI
 
-<span class="text-[#ff7b72]">struct</span> <span class="text-[#79c0ff]">MobileEngineering</span>: <span class="text-[#79c0ff]">View</span> {
-    <span class="text-[#ff7b72]">let</span> service = <span class="text-[#a5d6ff]">"Mobile Development"</span>
-    <span class="text-[#ff7b72]">let</span> tagline = <span class="text-[#a5d6ff]">"High-Performance Native & Cross-Platform"</span>
-    <span class="text-[#ff7b72]">let</span> frameworks = [<span class="text-[#a5d6ff]">"SwiftUI"</span>, <span class="text-[#a5d6ff]">"Kotlin"</span>, <span class="text-[#a5d6ff]">"React Native"</span>, <span class="text-[#a5d6ff]">"Flutter"</span>]
-    <span class="text-[#ff7b72]">let</span> features = [<span class="text-[#a5d6ff]">"Offline Sync"</span>, <span class="text-[#a5d6ff]">"Local Caching"</span>, <span class="text-[#a5d6ff]">"Native Hardware"</span>]
+<span class="text-[#FFFFFF]">struct</span> <span class="text-[#FFFFFF]">MobileEngineering</span>: <span class="text-[#FFFFFF]">View</span> {
+    <span class="text-[#FFFFFF]">let</span> service = <span class="text-[#F9FAFB]">"Mobile Development"</span>
+    <span class="text-[#FFFFFF]">let</span> tagline = <span class="text-[#F9FAFB]">"High-Performance Native & Cross-Platform"</span>
+    <span class="text-[#FFFFFF]">let</span> frameworks = [<span class="text-[#F9FAFB]">"SwiftUI"</span>, <span class="text-[#F9FAFB]">"Kotlin"</span>, <span class="text-[#F9FAFB]">"React Native"</span>, <span class="text-[#F9FAFB]">"Flutter"</span>]
+    <span class="text-[#FFFFFF]">let</span> features = [<span class="text-[#F9FAFB]">"Offline Sync"</span>, <span class="text-[#F9FAFB]">"Local Caching"</span>, <span class="text-[#F9FAFB]">"Native Hardware"</span>]
 }`,
-`<span class="text-[#8b949e]">/**
+`<span class="text-[#9CA3AF]">/**
  * Service: QA & Testing
  */</span>
-<span class="text-[#ff7b72]">import</span> { test, expect } <span class="text-[#ff7b72]">from</span> <span class="text-[#a5d6ff]">'@playwright/test'</span>;
+<span class="text-[#FFFFFF]">import</span> { test, expect } <span class="text-[#FFFFFF]">from</span> <span class="text-[#F9FAFB]">'@playwright/test'</span>;
 
-test(<span class="text-[#a5d6ff]">'end-to-end system reliability and defect prevention pass'</span>, <span class="text-[#ff7b72]">async</span> ({ page }) =&gt; {
-  <span class="text-[#ff7b72]">await</span> page.goto(<span class="text-[#a5d6ff]">'/production-release'</span>);
-  <span class="text-[#ff7b72]">await</span> expect(page.locator(<span class="text-[#a5d6ff]'#defect-free-score'</span>)).toHaveText(<span class="text-[#a5d6ff]'100% Verified'</span>);
+test(<span class="text-[#F9FAFB]">'end-to-end system reliability and defect prevention pass'</span>, <span class="text-[#FFFFFF]">async</span> ({ page }) =&gt; {
+  <span class="text-[#FFFFFF]">await</span> page.goto(<span class="text-[#F9FAFB]">'/production-release'</span>);
+  <span class="text-[#FFFFFF]">await</span> expect(page.locator(<span class="text-[#F9FAFB]'#defect-free-score'</span>)).toHaveText(<span class="text-[#F9FAFB]'100% Verified'</span>);
 });`,
-`<span class="text-[#8b949e]">/**
+`<span class="text-[#9CA3AF]">/**
  * Service: Staff Augmentation
  */</span>
-<span class="text-[#ff7b72]">export const</span> <span class="text-[#79c0ff]">staffAugmentation</span> = {
-  <span class="text-[#a5d6ff]">"service"</span>: <span class="text-[#a5d6ff]">"Staff Augmentation"</span>,
-  <span class="text-[#a5d6ff]">"tagline"</span>: <span class="text-[#a5d6ff]">"Flexible Technical Capacity & Embedded Pods"</span>,
-  <span class="text-[#a5d6ff]">"capacity_models"</span>: [
-    <span class="text-[#a5d6ff]">"Fractional Specialized Engineers"</span>,
-    <span class="text-[#a5d6ff]">"Full-Time Dedicated Engineering Pods"</span>
+<span class="text-[#FFFFFF]">export const</span> <span class="text-[#FFFFFF]">staffAugmentation</span> = {
+  <span class="text-[#F9FAFB]">"service"</span>: <span class="text-[#F9FAFB]">"Staff Augmentation"</span>,
+  <span class="text-[#F9FAFB]">"tagline"</span>: <span class="text-[#F9FAFB]">"Flexible Technical Capacity & Embedded Pods"</span>,
+  <span class="text-[#F9FAFB]">"capacity_models"</span>: [
+    <span class="text-[#F9FAFB]">"Fractional Specialized Engineers"</span>,
+    <span class="text-[#F9FAFB]">"Full-Time Dedicated Engineering Pods"</span>
   ],
-  <span class="text-[#a5d6ff]">"vetting_standard"</span>: <span class="text-[#a5d6ff]">"Top 1% Global Engineering Talent"</span>
+  <span class="text-[#F9FAFB]">"vetting_standard"</span>: <span class="text-[#F9FAFB]">"Top 1% Global Engineering Talent"</span>
 };`
     ];
 
@@ -700,15 +700,15 @@ test(<span class="text-[#a5d6ff]">'end-to-end system reliability and defect prev
         const line = container.find('line');
         
         if (i === index) {
-          // Active state
-          btn.removeClass('bg-[#0d1117] border-[#30363d] text-[#8b949e]')
-             .addClass('bg-[#161b22] border-[#58a6ff] text-[#58a6ff] scale-125 shadow-[0_0_20px_rgba(88,166,255,0.4)]');
-          line.attr('stroke', '#58a6ff').attr('stroke-width', '2');
+          // Active state (Brown accent, white text)
+          btn.removeClass('bg-[#111419] bg-[#0B0C0E] border-[rgba(255,255,255,0.08)]')
+             .addClass('bg-[#161A22] border-[#FFFFFF] text-white scale-125 shadow-[0_0_20px_rgba(200,83,25,0.4)]');
+          line.attr('stroke', '#FFFFFF').attr('stroke-width', '2');
         } else {
-          // Inactive state
-          btn.removeClass('bg-[#161b22] border-[#58a6ff] text-[#58a6ff] scale-125 shadow-[0_0_20px_rgba(88,166,255,0.4)]')
-             .addClass('bg-[#0d1117] border-[#30363d] text-[#8b949e]');
-          line.attr('stroke', 'rgba(255,255,255,0.05)').attr('stroke-width', '1');
+          // Inactive state (Dark bg, white text, faint white line)
+          btn.removeClass('bg-[#161A22] bg-[#161A22] border-[#FFFFFF] scale-125 shadow-[0_0_20px_rgba(200,83,25,0.4)]')
+             .addClass('bg-[#0B0C0E] border-[rgba(255,255,255,0.08)] text-white');
+          line.attr('stroke', 'rgba(255, 255, 255, 0.15)').attr('stroke-width', '1');
         }
       });
       

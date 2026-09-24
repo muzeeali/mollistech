@@ -17,8 +17,8 @@ function Page({ htmlContent }: { htmlContent: string }) {
   }, [location.pathname, htmlContent]);
 
   return (
-    <main className="main transition-all duration-300 transform opacity-100 translate-y-0">
-      {parse(htmlContent || '<div class="py-24 text-center"><h1 class="display-1 text-[#1868DB] font-bold">404</h1><p>Path not resolved.</p></div>')}
+    <main className="main transition-all duration-300 transform opacity-100 translate-y-0 bg-[#0B0C0E] text-[#F9FAFB]">
+      {parse(htmlContent || '<div class="py-24 text-center bg-[#0B0C0E] text-[#F9FAFB]"><h1 class="display-1 text-[#FFFFFF] font-bold">404</h1><p class="text-[#9CA3AF]">Path not resolved.</p></div>')}
     </main>
   );
 }
@@ -61,7 +61,7 @@ export default function App() {
   }, [location.pathname]);
 
   return (
-    <div className="app-container index-page bg-white">
+    <div className="app-container index-page bg-[#0B0C0E] text-[#F9FAFB] min-h-screen">
       {parse(getLayoutHeader(location.pathname))}
       
       <Routes>
