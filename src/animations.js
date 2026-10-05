@@ -59,33 +59,83 @@ export function initAnimations() {
     });
   }, { threshold: 0.1 });
   
-  $('section h2, section p, .client-logos, .section-card').not('.hero *').each(function() {
+  $('section h2, section p, .client-logos, .section-card').not('.hero *, #partnership-accordion *, #partnership-accordion p, .group *').each(function() {
     $(this).addClass('transition-all duration-1000 transform opacity-0 translate-y-10');
     observer.observe(this);
   });
   
-  $('h3.text-2xl, h3.text-4xl').not('.group *').each(function() {
+  $('h3.text-2xl, h3.text-4xl').not('.group *, #partnership-accordion *').each(function() {
     $(this).addClass('transition-all duration-1000 transform opacity-0 translate-y-10');
     observer.observe(this);
   });
 
 
 
-  // Ensure events are attached only once
-  $(document).off('click', '.cursor-pointer.transition-all');
-  $(document).on('click', '.cursor-pointer.transition-all', function() {
-    if ($(this).find('.font-mono').length) {
-      $(this).siblings().each(function() {
-        $(this).removeClass('bg-[#161A22] border-l-[#FFFFFF]').addClass('hover:bg-[#111419] border-l-transparent');
-        $(this).find('h3').removeClass('text-white').addClass('text-[#9CA3AF]');
-        $(this).find('.font-mono').removeClass('text-[#FFFFFF]').addClass('text-white/60');
-        $(this).find('.overflow-hidden').css('max-height', '0px').css('opacity', '0').removeClass('mt-6');
+  // Window function for bulletproof accordion toggling
+  if (typeof window !== 'undefined') {
+    window.selectPartnershipItem = function(element) {
+      const parent = element.parentElement;
+      if (!parent) return;
+      Array.from(parent.children).forEach(child => {
+        child.classList.remove('bg-[#161A22]', 'border-l-[#FFFFFF]', 'pl-10');
+        child.classList.add('border-l-transparent');
+        const h3 = child.querySelector('h3');
+        if (h3) { h3.classList.remove('text-white'); h3.classList.add('text-white/60'); }
+        const mono = child.querySelector('.font-mono');
+        if (mono) { mono.classList.remove('text-[#FFFFFF]'); mono.classList.add('text-white/40'); }
+        const body = child.querySelector('.overflow-hidden');
+        if (body) {
+          body.classList.remove('max-h-40', 'opacity-100', 'mt-4');
+          body.classList.add('max-h-0', 'opacity-0', 'mt-0');
+          body.style.maxHeight = '0px';
+          body.style.opacity = '0';
+          const p = body.querySelector('p');
+          if (p) {
+            p.classList.remove('opacity-100', 'translate-y-0');
+            p.style.opacity = '0';
+          }
+          const icon = body.querySelector('i');
+          if (icon) {
+            icon.style.opacity = '0';
+          }
+        }
       });
-      
-      $(this).addClass('bg-[#161A22] border-l-[#FFFFFF]').removeClass('hover:bg-[#111419] border-l-transparent');
-      $(this).find('h3').addClass('text-white').removeClass('text-[#9CA3AF]');
-      $(this).find('.font-mono').addClass('text-[#FFFFFF]').removeClass('text-white/60');
-      $(this).find('.overflow-hidden').css('max-height', '200px').css('opacity', '1').addClass('mt-6');
+      element.classList.add('bg-[#161A22]', 'border-l-[#FFFFFF]', 'pl-10');
+      element.classList.remove('border-l-transparent');
+      const h3 = element.querySelector('h3');
+      if (h3) { h3.classList.add('text-white'); h3.classList.remove('text-white/60'); }
+      const mono = element.querySelector('.font-mono');
+      if (mono) { mono.classList.add('text-[#FFFFFF]'); mono.classList.remove('text-white/40'); }
+      const body = element.querySelector('.overflow-hidden');
+      if (body) {
+        body.classList.remove('max-h-0', 'opacity-0', 'mt-0');
+        body.classList.add('max-h-40', 'opacity-100', 'mt-4');
+        body.style.maxHeight = '300px';
+        body.style.opacity = '1';
+        const p = body.querySelector('p');
+        if (p) {
+          p.classList.remove('opacity-0', 'translate-y-10');
+          p.classList.add('opacity-100', 'translate-y-0');
+          p.style.opacity = '1';
+          p.style.transform = 'translateY(0)';
+          p.style.color = '#F9FAFB';
+          p.style.display = 'block';
+        }
+        const icon = body.querySelector('i');
+        if (icon) {
+          icon.style.opacity = '1';
+          icon.style.color = '#FFFFFF';
+          icon.style.display = 'inline-block';
+        }
+      }
+    };
+  }
+
+  // Ensure events are attached only once
+  $(document).off('click', '#partnership-accordion > div');
+  $(document).on('click', '#partnership-accordion > div', function() {
+    if (window.selectPartnershipItem) {
+      window.selectPartnershipItem(this);
     }
   });
 
@@ -212,12 +262,6 @@ export function initAnimations() {
         $(this).removeClass('opacity-100').addClass('opacity-0 pointer-events-none');
       }
     });
-    
-    if (currentIdeIndex !== index && index >= 0 && index < ideContents.length) {
-      currentIdeIndex = index;
-      ideFilenameEl.text(ideFiles[index]);
-      typeHTML(ideContents[index], ideContentEl);
-    }
   });
 
   $(document).off('click', '.mobile-nav-toggle');
@@ -281,89 +325,6 @@ export function initAnimations() {
   startHeroSlider();
 
   
-  // 12. IDE Terminal Typing Animation
-  const ideFiles = [
-  "paid-advertising.json",
-  "seo-strategy.json",
-  "social-media.json",
-  "software-development.json",
-  "ui-ux.json",
-  "system-integration.json"
-];
-
-  const ideContents = [`<span class="text-[#9CA3AF]">/**
- * Service Module: Paid Advertising
- */</span>
-<span class="text-[#FFFFFF]">export const</span> <span class="text-[#FFFFFF]">campaignData</span> = {
-  <span class="text-[#F9FAFB]">"title"</span>: <span class="text-[#F9FAFB]">"Data-Driven Campaigns"</span>,
-  <span class="text-[#F9FAFB]">"description"</span>: <span class="text-[#F9FAFB]">"Maximize your ROI with targeted ad placements, rigorous A/B testing, and data-backed performance marketing strategies."</span>,
-  <span class="text-[#F9FAFB]">"channels"</span>: [
-    <span class="text-[#F9FAFB]">"Google Ads"</span>,
-    <span class="text-[#F9FAFB]">"Meta Ads"</span>,
-    <span class="text-[#F9FAFB]">"LinkedIn Ads"</span>,
-    <span class="text-[#F9FAFB]">"Programmatic"</span>
-  ]
-};`,`<span class="text-[#9CA3AF]">/**
- * Service Module: SEO
- */</span>
-<span class="text-[#FFFFFF]">export const</span> <span class="text-[#FFFFFF]">seoData</span> = {
-  <span class="text-[#F9FAFB]">"title"</span>: <span class="text-[#F9FAFB]">"Search Engine Optimization"</span>,
-  <span class="text-[#F9FAFB]">"description"</span>: <span class="text-[#F9FAFB]">"Increase your visibility and drive high-quality organic traffic through technical SEO, optimized content, and authoritative link building."</span>,
-  <span class="text-[#F9FAFB]">"tactics"</span>: [
-    <span class="text-[#F9FAFB]">"Technical SEO"</span>,
-    <span class="text-[#F9FAFB]">"Content Strategy"</span>,
-    <span class="text-[#F9FAFB]">"Link Building"</span>
-  ]
-};`,`<span class="text-[#9CA3AF]">/**
- * Service Module: Social Media
- */</span>
-<span class="text-[#FFFFFF]">export const</span> <span class="text-[#FFFFFF]">socialData</span> = {
-  <span class="text-[#F9FAFB]">"title"</span>: <span class="text-[#F9FAFB]">"Social Media Marketing"</span>,
-  <span class="text-[#F9FAFB]">"description"</span>: <span class="text-[#F9FAFB]">"Build brand loyalty and community through strategic content, proactive engagement, and targeted social campaigns."</span>,
-  <span class="text-[#F9FAFB]">"platforms"</span>: [
-    <span class="text-[#F9FAFB]">"Instagram"</span>,
-    <span class="text-[#F9FAFB]">"TikTok"</span>,
-    <span class="text-[#F9FAFB]">"LinkedIn"</span>
-  ]
-};`,`<span class="text-[#9CA3AF]">/**
- * Service Module: Software Development
- */</span>
-<span class="text-[#FFFFFF]">export const</span> <span class="text-[#FFFFFF]">softwareData</span> = {
-  <span class="text-[#F9FAFB]">"title"</span>: <span class="text-[#F9FAFB]">"Custom Software Engineering"</span>,
-  <span class="text-[#F9FAFB]">"description"</span>: <span class="text-[#F9FAFB]">"We design and develop secure, maintainable, and high-performance software for web, mobile, and enterprise environments."</span>,
-  <span class="text-[#F9FAFB]">"stack"</span>: [
-    <span class="text-[#F9FAFB]">"React"</span>,
-    <span class="text-[#F9FAFB]">"Node.js"</span>,
-    <span class="text-[#F9FAFB]">"Python"</span>
-  ]
-};`,`<span class="text-[#9CA3AF]">/**
- * Service Module: UI/UX
- */</span>
-<span class="text-[#FFFFFF]">export const</span> <span class="text-[#FFFFFF]">designData</span> = {
-  <span class="text-[#F9FAFB]">"title"</span>: <span class="text-[#F9FAFB]">"User Interface & Experience"</span>,
-  <span class="text-[#F9FAFB]">"description"</span>: <span class="text-[#F9FAFB]">"Simplify complex workflows with pixel-perfect, user-centric interfaces designed for modern users."</span>,
-  <span class="text-[#F9FAFB]">"tools"</span>: [
-    <span class="text-[#F9FAFB]">"Figma"</span>,
-    <span class="text-[#F9FAFB]">"Framer"</span>,
-    <span class="text-[#F9FAFB]">"Webflow"</span>
-  ]
-};`,`<span class="text-[#9CA3AF]">/**
- * Service Module: System Integration
- */</span>
-<span class="text-[#FFFFFF]">export const</span> <span class="text-[#FFFFFF]">integrationData</span> = {
-  <span class="text-[#F9FAFB]">"title"</span>: <span class="text-[#F9FAFB]">"Connecting Digital Ecosystems"</span>,
-  <span class="text-[#F9FAFB]">"description"</span>: <span class="text-[#F9FAFB]">"We build robust, secure APIs and seamlessly integrate third-party platforms to automate data flow across your organization."</span>,
-  <span class="text-[#F9FAFB]">"protocols"</span>: [
-    <span class="text-[#F9FAFB]">"REST"</span>,
-    <span class="text-[#F9FAFB]">"GraphQL"</span>,
-    <span class="text-[#F9FAFB]">"WebSockets"</span>
-  ]
-};`];
-
-  let currentIdeIndex = -1;
-  const ideFilenameEl = $('#ide-filename');
-  const ideContentEl = $('#ide-content');
-
   // typeHTML moved to top
 
 

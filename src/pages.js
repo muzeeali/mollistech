@@ -142,6 +142,137 @@ export const page_about = `<div class="bg-[#0B0C0E] min-h-screen">
     </div>
   </section>
 
+  <section id="leadership" class="py-28 bg-[#0B0C0E] relative overflow-hidden border-t border-[rgba(255,255,255,0.08)]">
+    <!-- Ambient glow decorations -->
+    <div class="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-[#c85319] rounded-full blur-[160px] opacity-10 pointer-events-none -translate-x-1/2 -translate-y-1/2"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-[450px] h-[450px] bg-white rounded-full blur-[180px] opacity-5 pointer-events-none"></div>
+
+    <div class="container max-w-7xl mx-auto px-4 md:px-8 relative z-10">
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-20">
+        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-semibold tracking-widest text-[#c85319] uppercase mb-4 bg-[#c85319]/10 border border-[#c85319]/20">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#c85319] animate-pulse"></span>
+          Leadership &amp; Vision
+        </span>
+        <h2 class="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight mb-6 leading-tight">
+          The Leadership Driving Mollistech
+        </h2>
+        <p class="text-lg md:text-xl text-[#9CA3AF] leading-relaxed">
+          Guided by deep engineering discipline and entrepreneurial ambition, our founders champion radical transparency, strategic foresight, and relentless execution quality.
+        </p>
+      </div>
+
+      <!-- Leaders Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto">
+        <!-- Card 1: Mir Abeer Atif -->
+        <div class="group relative bg-gradient-to-b from-[#161A22] to-[#0E1117] rounded-3xl p-8 sm:p-10 border border-[rgba(255,255,255,0.08)] hover:border-[#c85319]/50 transition-all duration-500 shadow-2xl hover:shadow-[0_20px_50px_rgba(200,83,25,0.12)] flex flex-col justify-between overflow-hidden">
+          <div class="absolute -top-24 -right-24 w-60 h-60 bg-[#c85319]/10 rounded-full blur-3xl group-hover:bg-[#c85319]/25 transition-all duration-700 pointer-events-none"></div>
+          
+          <div class="relative z-10">
+            <!-- Header with Avatar and Tag -->
+            <div class="flex items-start justify-between gap-4 mb-8">
+              <div class="relative">
+                <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl p-[2px] bg-gradient-to-tr from-[#c85319] via-white/30 to-[#c85319]/40 shadow-lg">
+                  <div class="w-full h-full rounded-[14px] bg-[#0B0C0E] flex items-center justify-center relative overflow-hidden">
+                    <span class="text-2xl sm:text-3xl font-black tracking-wider text-transparent bg-clip-text bg-gradient-to-br from-white via-gray-200 to-gray-400 font-display">MA</span>
+                    <div class="absolute bottom-1 right-1 w-3 h-3 rounded-full bg-emerald-500 border-2 border-[#0B0C0E]"></div>
+                  </div>
+                </div>
+              </div>
+              <span class="px-3 py-1 rounded-full text-[11px] font-mono font-medium tracking-wider uppercase bg-white/5 text-gray-300 border border-white/10">
+                Co-Founder
+              </span>
+            </div>
+
+            <!-- Name & Title -->
+            <h3 class="text-2xl sm:text-3xl font-black text-white tracking-tight mb-2 group-hover:text-white transition-colors">
+              Mir Abeer Atif
+            </h3>
+            <p class="text-sm sm:text-base font-semibold text-[#c85319] uppercase tracking-wider font-mono mb-6">
+              CEO &amp; Co-Founder
+            </p>
+
+            <!-- Bio Quote -->
+            <div class="relative pl-5 border-l-2 border-[#c85319]/50 mb-8">
+              <p class="text-[#9CA3AF] group-hover:text-[#E5E7EB] text-base leading-relaxed transition-colors duration-300">
+                A visionary leader who shapes the company's future with bold strategy, sharp insight, and an unwavering commitment to excellence. He builds lasting partnerships and inspires innovation at every level.
+              </p>
+            </div>
+          </div>
+
+          <!-- Pillars / Tags -->
+          <div class="relative z-10 pt-6 border-t border-[rgba(255,255,255,0.08)] flex flex-wrap items-center justify-between gap-4">
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs font-mono px-2.5 py-1 rounded-md bg-[rgba(255,255,255,0.04)] text-gray-300 border border-[rgba(255,255,255,0.06)]">Strategic Vision</span>
+              <span class="text-xs font-mono px-2.5 py-1 rounded-md bg-[rgba(255,255,255,0.04)] text-gray-300 border border-[rgba(255,255,255,0.06)]">Global Partnerships</span>
+            </div>
+            <div class="flex items-center gap-2 text-gray-400">
+              <a href="mailto:hello@mollistech.com" aria-label="Email Mir Abeer Atif" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-[#c85319] hover:text-white border border-white/10 flex items-center justify-center transition-all duration-300 text-sm">
+                <i class="bi bi-envelope"></i>
+              </a>
+              <a href="/contact" aria-label="Connect with Mir Abeer Atif" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-[#c85319] hover:text-white border border-white/10 flex items-center justify-center transition-all duration-300 text-sm">
+                <i class="bi bi-linkedin"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Sami Tariq -->
+        <div class="group relative bg-gradient-to-b from-[#161A22] to-[#0E1117] rounded-3xl p-8 sm:p-10 border border-[rgba(255,255,255,0.08)] hover:border-[#c85319]/50 transition-all duration-500 shadow-2xl hover:shadow-[0_20px_50px_rgba(200,83,25,0.12)] flex flex-col justify-between overflow-hidden">
+          <div class="absolute -top-24 -right-24 w-60 h-60 bg-[#c85319]/10 rounded-full blur-3xl group-hover:bg-[#c85319]/25 transition-all duration-700 pointer-events-none"></div>
+          
+          <div class="relative z-10">
+            <!-- Header with Avatar and Tag -->
+            <div class="flex items-start justify-between gap-4 mb-8">
+              <div class="relative">
+                <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl p-[2px] bg-gradient-to-tr from-[#c85319] via-white/30 to-[#c85319]/40 shadow-lg">
+                  <div class="w-full h-full rounded-[14px] bg-[#0B0C0E] flex items-center justify-center relative overflow-hidden">
+                    <span class="text-2xl sm:text-3xl font-black tracking-wider text-transparent bg-clip-text bg-gradient-to-br from-white via-gray-200 to-gray-400 font-display">ST</span>
+                    <div class="absolute bottom-1 right-1 w-3 h-3 rounded-full bg-emerald-500 border-2 border-[#0B0C0E]"></div>
+                  </div>
+                </div>
+              </div>
+              <span class="px-3 py-1 rounded-full text-[11px] font-mono font-medium tracking-wider uppercase bg-white/5 text-gray-300 border border-white/10">
+                Co-Founder
+              </span>
+            </div>
+
+            <!-- Name & Title -->
+            <h3 class="text-2xl sm:text-3xl font-black text-white tracking-tight mb-2 group-hover:text-white transition-colors">
+              Sami Tariq
+            </h3>
+            <p class="text-sm sm:text-base font-semibold text-[#c85319] uppercase tracking-wider font-mono mb-6">
+              Managing Director &amp; Co-Founder
+            </p>
+
+            <!-- Bio Quote -->
+            <div class="relative pl-5 border-l-2 border-[#c85319]/50 mb-8">
+              <p class="text-[#9CA3AF] group-hover:text-[#E5E7EB] text-base leading-relaxed transition-colors duration-300">
+                A strategic force behind the company's success, he transforms vision into reality with precision and purpose. His leadership ensures seamless execution, outstanding quality, and lasting impact.
+              </p>
+            </div>
+          </div>
+
+          <!-- Pillars / Tags -->
+          <div class="relative z-10 pt-6 border-t border-[rgba(255,255,255,0.08)] flex flex-wrap items-center justify-between gap-4">
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs font-mono px-2.5 py-1 rounded-md bg-[rgba(255,255,255,0.04)] text-gray-300 border border-[rgba(255,255,255,0.06)]">Operational Precision</span>
+              <span class="text-xs font-mono px-2.5 py-1 rounded-md bg-[rgba(255,255,255,0.04)] text-gray-300 border border-[rgba(255,255,255,0.06)]">Execution Quality</span>
+            </div>
+            <div class="flex items-center gap-2 text-gray-400">
+              <a href="mailto:hello@mollistech.com" aria-label="Email Sami Tariq" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-[#c85319] hover:text-white border border-white/10 flex items-center justify-center transition-all duration-300 text-sm">
+                <i class="bi bi-envelope"></i>
+              </a>
+              <a href="/contact" aria-label="Connect with Sami Tariq" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-[#c85319] hover:text-white border border-white/10 flex items-center justify-center transition-all duration-300 text-sm">
+                <i class="bi bi-linkedin"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="py-20 bg-[#161A22] text-white text-center relative overflow-hidden">
     <div class="container max-w-4xl mx-auto px-4 relative z-10">
       <span class="text-xs font-mono tracking-widest text-[#FFFFFF] uppercase mb-4 block font-bold">Ready to Scale?</span>
@@ -455,7 +586,91 @@ export const page_home = `<section id="hero-slider" class="relative w-full h-[85
 
 ${page_case_studies}
 
-<section class="py-24 bg-[#0B0C0E] relative overflow-hidden border-b border-[rgba(255,255,255,0.08)]"><div class="absolute top-1/2 right-1/4 w-[600px] h-[600px] bg-[#c85319] rounded-full blur-[150px] opacity-10 transition-all duration-1000 -translate-y-1/2 pointer-events-none text-white !text-white"></div><div class="container max-w-7xl mx-auto px-4 flex flex-col lg:flex-row gap-16 relative z-10"><div class="lg:w-2/5 flex flex-col justify-center"><span class="text-sm font-bold tracking-widest text-[#FFFFFF] uppercase mb-3 block">Why Mollistech</span><h2 class="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">Partnership Strengths</h2><p class="text-xl text-[#F9FAFB]">Sought after by international brands for engineering discipline, cloud proficiency, and execution transparency.</p></div><div class="lg:w-3/5 flex flex-col relative group"><div class="w-full flex flex-col border-t border-[rgba(255,255,255,0.08)]"><div class="border-b border-[rgba(255,255,255,0.08)] py-8 px-6 cursor-pointer transition-all duration-500 bg-[#161A22] pl-10 border-l-4 border-l-[#FFFFFF]"><div class="flex items-center gap-6"><div class="font-mono text-xl font-bold transition-colors duration-500 text-[#FFFFFF]">01</div><h3 class="text-2xl md:text-4xl font-extrabold transition-colors duration-500 text-white">Engineering-First Culture</h3></div><div class="overflow-hidden transition-all duration-500 ease-in-out max-h-40 opacity-100 mt-6"><div class="pl-14 flex items-start gap-4"><i class="bi bi-code-square text-2xl text-[#FFFFFF]"></i><p class="text-lg text-[#F9FAFB] leading-relaxed max-w-lg">We prioritize clean architecture, robust code validation, and disciplined system design across all platforms.</p></div></div></div><div class="border-b border-[rgba(255,255,255,0.08)] py-8 px-6 cursor-pointer transition-all duration-500 hover:bg-[#0B0C0E] border-l-4 border-l-transparent"><div class="flex items-center gap-6"><div class="font-mono text-xl font-bold transition-colors duration-500 text-white/60">02</div><h3 class="text-2xl md:text-4xl font-extrabold transition-colors duration-500 text-white">AWS &amp; Cloud Expertise</h3></div><div class="overflow-hidden transition-all duration-500 ease-in-out max-h-0 opacity-0 mt-0"><div class="pl-14 flex items-start gap-4"><i class="bi bi-cloud-check-fill text-2xl text-[#FFFFFF]"></i><p class="text-lg text-[#F9FAFB] leading-relaxed max-w-lg">Deep knowledge in deploying high-availability services, microservices, and containerization orchestration.</p></div></div></div><div class="border-b border-[rgba(255,255,255,0.08)] py-8 px-6 cursor-pointer transition-all duration-500 hover:bg-[#0B0C0E] border-l-4 border-l-transparent"><div class="flex items-center gap-6"><div class="font-mono text-xl font-bold transition-colors duration-500 text-white/60">03</div><h3 class="text-2xl md:text-4xl font-extrabold transition-colors duration-500 text-white">Data-Intensive Systems</h3></div><div class="overflow-hidden transition-all duration-500 ease-in-out max-h-0 opacity-0 mt-0"><div class="pl-14 flex items-start gap-4"><i class="bi bi-database-fill-gear text-2xl text-[#FFFFFF]"></i><p class="text-lg text-[#F9FAFB] leading-relaxed max-w-lg">Demonstrated success handling massive streaming data pools, real-time analytics, and search indexings.</p></div></div></div><div class="border-b border-[rgba(255,255,255,0.08)] py-8 px-6 cursor-pointer transition-all duration-500 hover:bg-[#0B0C0E] border-l-4 border-l-transparent"><div class="flex items-center gap-6"><div class="font-mono text-xl font-bold transition-colors duration-500 text-white/60">04</div><h3 class="text-2xl md:text-4xl font-extrabold transition-colors duration-500 text-white">Flexible Engagement</h3></div><div class="overflow-hidden transition-all duration-500 ease-in-out max-h-0 opacity-0 mt-0"><div class="pl-14 flex items-start gap-4"><i class="bi bi-people-fill text-2xl text-[#FFFFFF]"></i><p class="text-lg text-[#F9FAFB] leading-relaxed max-w-lg">From dedicated full-time embedded pods to fractional capacity augmentation and leadership support.</p></div></div></div><div class="border-b border-[rgba(255,255,255,0.08)] py-8 px-6 cursor-pointer transition-all duration-500 hover:bg-[#0B0C0E] border-l-4 border-l-transparent"><div class="flex items-center gap-6"><div class="font-mono text-xl font-bold transition-colors duration-500 text-white/60">05</div><h3 class="text-2xl md:text-4xl font-extrabold transition-colors duration-500 text-white">Startup Agility</h3></div><div class="overflow-hidden transition-all duration-500 ease-in-out max-h-0 opacity-0 mt-0"><div class="pl-14 flex items-start gap-4"><i class="bi bi-speedometer text-2xl text-[#FFFFFF]"></i><p class="text-lg text-[#F9FAFB] leading-relaxed max-w-lg">Fast-growth delivery speeds balanced with corporate stability, strict release checks, and reliability.</p></div></div></div><div class="border-b border-[rgba(255,255,255,0.08)] py-8 px-6 cursor-pointer transition-all duration-500 hover:bg-[#0B0C0E] border-l-4 border-l-transparent"><div class="flex items-center gap-6"><div class="font-mono text-xl font-bold transition-colors duration-500 text-white/60">06</div><h3 class="text-2xl md:text-4xl font-extrabold transition-colors duration-500 text-white">Radical Transparency</h3></div><div class="overflow-hidden transition-all duration-500 ease-in-out max-h-0 opacity-0 mt-0"><div class="pl-14 flex items-start gap-4"><i class="bi bi-shield-check text-2xl text-[#FFFFFF]"></i><p class="text-lg text-[#F9FAFB] leading-relaxed max-w-lg">Direct live access to Git resources, Jira boards, and open Slack communications from day one.</p></div></div></div></div></div></div></section><section id="schedule" class="d-none py-24 bg-[#161A22] border-b border-[rgba(255,255,255,0.08)] relative overflow-hidden"><div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-4xl bg-[rgba(255,255,255,0.03)] rounded-full blur-[150px] pointer-events-none text-white !text-white"></div></div><div class="container relative z-10 max-w-5xl text-center"><div class="text-center mb-16"><span class="text-[#FFFFFF] font-mono tracking-widest uppercase text-sm mb-4 block">Let's talk systems</span><h2 class="text-5xl md:text-7xl font-black text-[#F9FAFB] tracking-tight mb-8">Ready to architect your future?</h2><p class="text-[#9CA3AF] text-xl leading-relaxed max-w-2xl mx-auto">Book a discovery call directly with our engineering leadership team to discuss your infrastructure, security, or product needs.</p></div><div class="bg-[#0B0C0E] rounded-[32px] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-[rgba(255,255,255,0.08)]" style="min-height: 700px;"><iframe src="https://calendly.com/zain-ali-hashmi/mollistech-intro-systems-discovery?hide_event_type_details=1&amp;hide_gdpr_banner=1" width="100%" height="100%" frameborder="0" title="Schedule a meeting with Mollistech" class="w-full h-full min-h-[700px]"></iframe></div></div></section>
+<section class="py-24 bg-[#0B0C0E] relative overflow-hidden border-b border-[rgba(255,255,255,0.08)]"><div class="absolute top-1/2 right-1/4 w-[600px] h-[600px] bg-[#c85319] rounded-full blur-[150px] opacity-10 transition-all duration-1000 -translate-y-1/2 pointer-events-none text-white !text-white"></div><div class="container max-w-7xl mx-auto px-4 flex flex-col lg:flex-row gap-16 relative z-10"><div class="lg:w-2/5 flex flex-col justify-center"><span class="text-sm font-bold tracking-widest text-[#FFFFFF] uppercase mb-3 block">Why Mollistech</span><h2 class="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">Partnership Strengths</h2><p class="text-xl text-[#F9FAFB]">Sought after by international brands for engineering discipline, cloud proficiency, and execution transparency.</p></div><div class="lg:w-3/5 flex flex-col relative group"><div id="partnership-accordion" class="w-full flex flex-col border-t border-[rgba(255,255,255,0.08)]">
+  <!-- 01: Paid Advertising & Performance Media -->
+  <div onclick="window.selectPartnershipItem && window.selectPartnershipItem(this)" class="border-b border-[rgba(255,255,255,0.08)] py-7 px-6 cursor-pointer transition-all duration-500 bg-[#161A22] pl-10 border-l-4 border-l-[#FFFFFF]">
+    <div class="flex items-center gap-6">
+      <div class="font-mono text-lg md:text-xl font-bold transition-colors duration-500 text-[#FFFFFF]">01</div>
+      <h3 class="text-lg md:text-2xl font-bold transition-colors duration-500 text-white">Paid Advertising &amp; Performance Media</h3>
+    </div>
+    <div class="overflow-hidden transition-all duration-500 ease-in-out max-h-40 opacity-100 mt-4" style="max-height: 300px; opacity: 1;">
+      <div class="pl-12 md:pl-14 flex items-start gap-4">
+        <i class="bi bi-bullseye text-xl md:text-2xl text-[#FFFFFF] mt-1 shrink-0" style="opacity: 1; color: #FFFFFF;"></i>
+        <p class="text-base md:text-lg text-[#F9FAFB] leading-relaxed max-w-lg mb-0" style="opacity: 1; color: #F9FAFB;">Data-backed customer acquisition campaigns across Meta, Google, and TikTok managed directly against net contribution margin.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02: Search Engine Optimization (SEO) -->
+  <div onclick="window.selectPartnershipItem && window.selectPartnershipItem(this)" class="border-b border-[rgba(255,255,255,0.08)] py-7 px-6 cursor-pointer transition-all duration-500 hover:bg-[#0B0C0E] border-l-4 border-l-transparent">
+    <div class="flex items-center gap-6">
+      <div class="font-mono text-lg md:text-xl font-bold transition-colors duration-500 text-white/40">02</div>
+      <h3 class="text-lg md:text-2xl font-bold transition-colors duration-500 text-white/60">Search Engine Optimization (SEO)</h3>
+    </div>
+    <div class="overflow-hidden transition-all duration-500 ease-in-out max-h-0 opacity-0 mt-0" style="max-height: 0px; opacity: 0;">
+      <div class="pl-12 md:pl-14 flex items-start gap-4">
+        <i class="bi bi-search text-xl md:text-2xl text-[#FFFFFF] mt-1 shrink-0" style="color: #FFFFFF;"></i>
+        <p class="text-base md:text-lg text-[#F9FAFB] leading-relaxed max-w-lg mb-0" style="color: #F9FAFB;">In-depth technical SEO audits, topical authority architecture, and high-impact digital PR strategies designed to compound organic pipeline.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03: Social Media Marketing & Growth -->
+  <div onclick="window.selectPartnershipItem && window.selectPartnershipItem(this)" class="border-b border-[rgba(255,255,255,0.08)] py-7 px-6 cursor-pointer transition-all duration-500 hover:bg-[#0B0C0E] border-l-4 border-l-transparent">
+    <div class="flex items-center gap-6">
+      <div class="font-mono text-lg md:text-xl font-bold transition-colors duration-500 text-white/40">03</div>
+      <h3 class="text-lg md:text-2xl font-bold transition-colors duration-500 text-white/60">Social Media Marketing &amp; Growth</h3>
+    </div>
+    <div class="overflow-hidden transition-all duration-500 ease-in-out max-h-0 opacity-0 mt-0" style="max-height: 0px; opacity: 0;">
+      <div class="pl-12 md:pl-14 flex items-start gap-4">
+        <i class="bi bi-share text-xl md:text-2xl text-[#FFFFFF] mt-1 shrink-0" style="color: #FFFFFF;"></i>
+        <p class="text-base md:text-lg text-[#F9FAFB] leading-relaxed max-w-lg mb-0" style="color: #F9FAFB;">Full-funnel social channel orchestration, audience engagement, and high-velocity short-form content pipelines built for virality.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04: High-Impact Content & Creative Production -->
+  <div onclick="window.selectPartnershipItem && window.selectPartnershipItem(this)" class="border-b border-[rgba(255,255,255,0.08)] py-7 px-6 cursor-pointer transition-all duration-500 hover:bg-[#0B0C0E] border-l-4 border-l-transparent">
+    <div class="flex items-center gap-6">
+      <div class="font-mono text-lg md:text-xl font-bold transition-colors duration-500 text-white/40">04</div>
+      <h3 class="text-lg md:text-2xl font-bold transition-colors duration-500 text-white/60">High-Impact Content &amp; Creative Production</h3>
+    </div>
+    <div class="overflow-hidden transition-all duration-500 ease-in-out max-h-0 opacity-0 mt-0" style="max-height: 0px; opacity: 0;">
+      <div class="pl-12 md:pl-14 flex items-start gap-4">
+        <i class="bi bi-camera-reels text-xl md:text-2xl text-[#FFFFFF] mt-1 shrink-0" style="color: #FFFFFF;"></i>
+        <p class="text-base md:text-lg text-[#F9FAFB] leading-relaxed max-w-lg mb-0" style="color: #F9FAFB;">Commercial video production, dynamic 3D motion graphics, and direct-response copywriting crafted for high retention.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05: App Store Optimization & Mobile UA -->
+  <div onclick="window.selectPartnershipItem && window.selectPartnershipItem(this)" class="border-b border-[rgba(255,255,255,0.08)] py-7 px-6 cursor-pointer transition-all duration-500 hover:bg-[#0B0C0E] border-l-4 border-l-transparent">
+    <div class="flex items-center gap-6">
+      <div class="font-mono text-lg md:text-xl font-bold transition-colors duration-500 text-white/40">05</div>
+      <h3 class="text-lg md:text-2xl font-bold transition-colors duration-500 text-white/60">App Store Optimization &amp; Mobile UA</h3>
+    </div>
+    <div class="overflow-hidden transition-all duration-500 ease-in-out max-h-0 opacity-0 mt-0" style="max-height: 0px; opacity: 0;">
+      <div class="pl-12 md:pl-14 flex items-start gap-4">
+        <i class="bi bi-app-indicator text-xl md:text-2xl text-[#FFFFFF] mt-1 shrink-0" style="color: #FFFFFF;"></i>
+        <p class="text-base md:text-lg text-[#F9FAFB] leading-relaxed max-w-lg mb-0" style="color: #F9FAFB;">Comprehensive ASO keyword scaling, paid user acquisition funnels, and LiveOps engagement frameworks built to scale active users.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 06: Brand Strategy & Digital Identity -->
+  <div onclick="window.selectPartnershipItem && window.selectPartnershipItem(this)" class="border-b border-[rgba(255,255,255,0.08)] py-7 px-6 cursor-pointer transition-all duration-500 hover:bg-[#0B0C0E] border-l-4 border-l-transparent">
+    <div class="flex items-center gap-6">
+      <div class="font-mono text-lg md:text-xl font-bold transition-colors duration-500 text-white/40">06</div>
+      <h3 class="text-lg md:text-2xl font-bold transition-colors duration-500 text-white/60">Brand Strategy &amp; Digital Identity</h3>
+    </div>
+    <div class="overflow-hidden transition-all duration-500 ease-in-out max-h-0 opacity-0 mt-0" style="max-height: 0px; opacity: 0;">
+      <div class="pl-12 md:pl-14 flex items-start gap-4">
+        <i class="bi bi-fingerprint text-xl md:text-2xl text-[#FFFFFF] mt-1 shrink-0" style="color: #FFFFFF;"></i>
+        <p class="text-base md:text-lg text-[#F9FAFB] leading-relaxed max-w-lg mb-0" style="color: #F9FAFB;">Market-tested positioning frameworks, brand narrative architecture, and comprehensive visual guidelines that command enterprise value.</p>
+      </div>
+    </div>
+  </div>
+</div></div></div></div></section><section id="schedule" class="d-none py-24 bg-[#161A22] border-b border-[rgba(255,255,255,0.08)] relative overflow-hidden"><div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-4xl bg-[rgba(255,255,255,0.03)] rounded-full blur-[150px] pointer-events-none text-white !text-white"></div></div><div class="container relative z-10 max-w-5xl text-center"><div class="text-center mb-16"><span class="text-[#FFFFFF] font-mono tracking-widest uppercase text-sm mb-4 block">Let's talk systems</span><h2 class="text-5xl md:text-7xl font-black text-[#F9FAFB] tracking-tight mb-8">Ready to architect your future?</h2><p class="text-[#9CA3AF] text-xl leading-relaxed max-w-2xl mx-auto">Book a discovery call directly with our engineering leadership team to discuss your infrastructure, security, or product needs.</p></div><div class="bg-[#0B0C0E] rounded-[32px] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-[rgba(255,255,255,0.08)]" style="min-height: 700px;"><iframe src="https://calendly.com/zain-ali-hashmi/mollistech-intro-systems-discovery?hide_event_type_details=1&amp;hide_gdpr_banner=1" width="100%" height="100%" frameborder="0" title="Schedule a meeting with Mollistech" class="w-full h-full min-h-[700px]"></iframe></div></div></section>
 
 <section id="contact" class="py-24 bg-[#0B0C0E] text-left relative overflow-hidden border-t border-[rgba(255,255,255,0.07)]">
   <div class="container max-w-6xl mx-auto px-4 md:px-8 relative z-10">
