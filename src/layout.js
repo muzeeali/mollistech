@@ -29,7 +29,7 @@ export function getLayoutHeader(currentPath = '/') {
         </a>
       </div>
       <div class="w-full px-6 pt-[90px] d-xl-none mb-6">
-        <a href="/contact" class="btn-primary-white !m-0 !w-full !block text-center !py-3 !rounded-full !text-[15px] !font-semibold text-white bg-[#c85319] hover:bg-[#E5E7EB] transition-all">Start a Project</a>
+        <a href="/contact" class="btn-primary-white !m-0 !w-full !block text-center !py-3 !rounded-full !text-[15px] !font-semibold !text-white bg-[#c85319] hover:bg-[#db5c1c] transition-all shadow-sm">Contact Us</a>
       </div>
     </div>
     
@@ -41,10 +41,10 @@ export function getLayoutHeader(currentPath = '/') {
       <li><a href="/case-studies" class="${isWork} text-sm text-[#9CA3AF] hover:text-[#FFFFFF] transition-colors">Selected Work</a></li>
     </ul>
     
-    <i class="mobile-nav-toggle d-xl-none bi bi-list text-2xl text-white cursor-pointer"></i>
+    <i class="mobile-nav-toggle d-xl-none bi bi-three-dots-vertical text-2xl text-white cursor-pointer"></i>
   </nav>
 
-  <a class="btn-primary-white d-none d-xl-inline-flex items-center justify-center bg-[#c85319] hover:bg-[#db5c1c] text-white font-semibold text-sm px-6 py-2.5 rounded-full transition-all duration-200 text-decoration-none shadow-sm active:scale-95" href="/contact">
+  <a id="header-contact-btn" class="btn-primary-white d-none d-xl-inline-flex items-center justify-center bg-[#c85319] hover:bg-[#db5c1c] text-white font-semibold text-sm px-6 py-2.5 rounded-full transition-all duration-200 text-decoration-none shadow-sm active:scale-95" href="/contact">
     Contact Us
   </a>
 </div>
