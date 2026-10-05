@@ -226,43 +226,47 @@ export function initAnimations() {
   
   // Replaced by scoped network topology handlers
 
-  
-  $(document).off('click', '#hero-slider .bottom-12 button');
-  $(document).on('click mouseenter', '#hero-slider .bottom-12 button', function() {
-    const index = $(this).index();
+  // Hero Slider State & Function (15s auto-slide)
+  let currentHeroSlide = 0;
+  let heroSliderInterval;
+
+  function goToHeroSlide(index) {
     const heroSlider = $('#hero-slider');
-    
-    const buttons = heroSlider.find('.bottom-12 button');
-    buttons.each(function(i) {
-      if (i === index) {
-        $(this).find('.w-3.h-3').removeClass('border-gray-400 group-hover:border-[#FFFFFF] bg-transparent').addClass('bg-[#FFFFFF] border-[#FFFFFF]');
-        $(this).find('span').removeClass('text-[#9CA3AF] group-hover:text-white').addClass('text-white');
-        $(this).find('.bottom-0').removeClass('bg-white/20 opacity-0 group-hover:opacity-100').addClass('bg-[#FFFFFF]').css('opacity', '1');
-      } else {
-        $(this).find('.w-3.h-3').removeClass('bg-[#FFFFFF] border-[#FFFFFF]').addClass('border-gray-400 group-hover:border-[#FFFFFF] bg-transparent');
-        $(this).find('span').removeClass('text-white').addClass('text-[#9CA3AF] group-hover:text-white');
-        $(this).find('.bottom-0').removeClass('bg-[#FFFFFF]').addClass('bg-white/20 opacity-0 group-hover:opacity-100').css('opacity', '');
-      }
-    });
-    
+    if (!heroSlider.length) return;
+
     const textSlides = heroSlider.find('.max-w-2xl > div');
+    const graphicSlides = heroSlider.find('> .absolute.inset-0.z-0 > .absolute.inset-0');
+    const totalSlides = textSlides.length;
+    if (totalSlides === 0) return;
+
+    currentHeroSlide = ((index % totalSlides) + totalSlides) % totalSlides;
+
     textSlides.each(function(i) {
-      if (i === index) {
+      if (i === currentHeroSlide) {
         $(this).removeClass('opacity-0 translate-y-[20px] absolute inset-x-0 top-0 pointer-events-none').addClass('opacity-100 translate-y-0 relative');
       } else {
         $(this).removeClass('opacity-100 translate-y-0 relative').addClass('opacity-0 translate-y-[20px] absolute inset-x-0 top-0 pointer-events-none');
       }
     });
 
-    const graphicSlides = heroSlider.find('> .absolute.inset-0.z-0 > .absolute.inset-0');
     graphicSlides.each(function(i) {
-      if (i === index) {
+      if (i === currentHeroSlide) {
         $(this).removeClass('opacity-0 pointer-events-none').addClass('opacity-100');
       } else {
         $(this).removeClass('opacity-100').addClass('opacity-0 pointer-events-none');
       }
     });
-  });
+  }
+
+  function startHeroSlider() {
+    clearInterval(heroSliderInterval);
+    heroSliderInterval = setInterval(() => {
+      const heroSlider = $('#hero-slider');
+      if (heroSlider.length) {
+        goToHeroSlide(currentHeroSlide + 1);
+      }
+    }, 15000);
+  }
 
   $(document).off('click', '.mobile-nav-toggle');
   $(document).on('click', '.mobile-nav-toggle', function() {
@@ -289,40 +293,23 @@ export function initAnimations() {
     }
   });
 
-  // Initialize hero slider to first slide
+  // Initialize hero slider to first slide and start 15s auto-slide
   setTimeout(() => {
-    $('#hero-slider .bottom-12 button').first().trigger('click');
+    goToHeroSlide(0);
+    startHeroSlider();
   }, 100);
 
-  // 6. Hero Slider Auto-Slide Logic
-  let heroSliderInterval;
-  
-  function startHeroSlider() {
-    clearInterval(heroSliderInterval);
-    heroSliderInterval = setInterval(() => {
-      const buttons = $('#hero-slider .bottom-12 button');
-      if(buttons.length > 0) {
-        let activeIndex = -1;
-        buttons.each(function(i) {
-          if ($(this).find('span.text-white').length > 0 || $(this).find('span').hasClass('text-white')) {
-             activeIndex = i;
-          }
-        });
-        
-        let nextIndex = activeIndex + 1;
-        if(nextIndex >= buttons.length || nextIndex === 0) nextIndex = 0; // fallback if activeIndex is -1
-        
-        $(buttons[nextIndex]).trigger('click');
-      }
-    }, 10000);
-  }
-  
-  $(document).off('click.autoslide', '#hero-slider .bottom-12 button');
-  $(document).on('click.autoslide', '#hero-slider .bottom-12 button', function() {
-    startHeroSlider();
+  // Smooth scroll for Contact anchor links
+  $(document).off('click', 'a[href="#contact"]');
+  $(document).on('click', 'a[href="#contact"]', function(e) {
+    const target = $('#contact');
+    if (target.length) {
+      e.preventDefault();
+      $('html, body').animate({
+        scrollTop: target.offset().top - 80
+      }, 600);
+    }
   });
-  
-  startHeroSlider();
 
   
   // typeHTML moved to top
