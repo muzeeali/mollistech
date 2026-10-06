@@ -13,9 +13,7 @@ export function getLayoutHeader(currentPath = '/') {
 <div class="container max-w-7xl mx-auto px-4 md:px-8 position-relative d-flex align-items-center justify-content-between">
   <a href="/" class="logo d-flex align-items-center me-auto text-decoration-none py-3">
     <div class="flex items-center gap-3">
-      <div class="w-8 h-8 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center font-display font-bold text-white text-base shadow-sm">
-        M
-      </div>
+      <img src="/logo.png" alt="Mollistech Logo" class="w-8 h-8 object-contain" />
       <span class="font-display font-semibold text-lg tracking-tight text-[#F9FAFB]">Mollistech</span>
     </div>
   </a>
@@ -24,7 +22,7 @@ export function getLayoutHeader(currentPath = '/') {
     <div class="mobile-nav-extras hidden">
       <div class="absolute top-[20px] left-[20px] z-[9999] d-xl-none">
         <a href="/" class="!border-none !p-0 text-decoration-none flex items-center gap-2">
-          <div class="w-8 h-8 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center font-display font-bold text-white text-sm">M</div>
+          <img src="/logo.png" alt="Mollistech Logo" class="w-8 h-8 object-contain" />
           <span class="font-display font-semibold text-lg text-[#F9FAFB]">Mollistech</span>
         </a>
       </div>
@@ -59,9 +57,7 @@ export const layout_footer = `<footer id="footer" class="footer bg-[#0B0C0E] tex
     <div class="row gy-5">
       <div class="col-lg-4 col-md-6 d-flex flex-column gap-3">
         <a href="/" class="d-flex align-items-center gap-3 text-decoration-none mb-2">
-          <div class="w-8 h-8 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center font-display font-bold text-white text-base">
-            M
-          </div>
+          <img src="/logo.png" alt="Mollistech Logo" class="w-8 h-8 object-contain" />
           <span class="font-display font-semibold text-lg tracking-tight text-[#F9FAFB]">Mollistech</span>
         </a>
         <p class="text-[13px] text-[#9CA3AF] leading-relaxed max-w-sm mb-3">
